@@ -1,5 +1,5 @@
 import React from 'react';
-import { DrillMode, EventId } from '../data/types';
+import { DrillMode, EventId, EndingId } from '../data/types';
 import { scenarioEvents, endingDefinitions } from '../data/events';
 import confetti from 'canvas-confetti';
 import { playSound } from '../utils/audio';
@@ -10,6 +10,7 @@ import {
   RotateCcw,
   GitBranch,
   ShieldCheck,
+  AlertOctagon,
   Server,
   Briefcase,
   Layers,
@@ -18,7 +19,7 @@ import {
 
 interface EndingScreenProps {
   drillMode: DrillMode;
-  endingId: 'ending1' | 'ending2';
+  endingId: EndingId;
   cumulativeScores: {
     event1?: { engineer: number; management: number };
     event2?: { engineer: number; management: number };
@@ -39,7 +40,7 @@ export const EndingScreen: React.FC<EndingScreenProps> = ({
 }) => {
   const ending = endingDefinitions[endingId];
 
-  // Fire celebratory effects
+  // Fire sound/celebratory effects
   React.useEffect(() => {
     playSound(endingId === 'ending1' ? 'victory' : 'transition');
     if (endingId === 'ending1') {
@@ -98,12 +99,23 @@ export const EndingScreen: React.FC<EndingScreenProps> = ({
         className={`rounded-3xl p-6 sm:p-10 border mb-10 shadow-2xl relative overflow-hidden ${
           endingId === 'ending1'
             ? 'bg-gradient-to-b from-slate-900 to-emerald-950/40 border-emerald-500/40'
+            : endingId === 'ending3'
+            ? 'bg-gradient-to-b from-slate-900 to-rose-950/60 border-rose-500/50 shadow-rose-950/40'
             : 'bg-gradient-to-b from-slate-900 to-indigo-950/40 border-indigo-500/40'
         }`}
       >
         <div className="flex items-center gap-2 text-xs font-mono mb-3">
-          <ShieldCheck className="w-4 h-4 text-amber-400" />
-          <span className="text-amber-400">DRILL COMPLETION · 演習完了</span>
+          {endingId === 'ending3' ? (
+            <>
+              <AlertOctagon className="w-4 h-4 text-rose-400 animate-pulse" />
+              <span className="text-rose-400 font-bold">CRITICAL INCIDENT STATUS · 危機継続中</span>
+            </>
+          ) : (
+            <>
+              <ShieldCheck className="w-4 h-4 text-amber-400" />
+              <span className="text-amber-400">DRILL COMPLETION · 演習完了</span>
+            </>
+          )}
         </div>
 
         <h1 className="text-2xl sm:text-4xl font-black text-white tracking-tight mb-2">
@@ -113,7 +125,11 @@ export const EndingScreen: React.FC<EndingScreenProps> = ({
           {ending.subtitle}
         </p>
 
-        <div className="bg-slate-950/80 p-5 rounded-2xl border border-slate-800/80 mb-6 text-sm text-slate-200 leading-relaxed">
+        <div className={`p-5 rounded-2xl border mb-6 text-sm leading-relaxed ${
+          endingId === 'ending3'
+            ? 'bg-rose-950/40 border-rose-500/40 text-rose-100'
+            : 'bg-slate-950/80 border-slate-800/80 text-slate-200'
+        }`}>
           {ending.narrative}
         </div>
 
@@ -126,9 +142,17 @@ export const EndingScreen: React.FC<EndingScreenProps> = ({
             {ending.evaluationPoints.map((pt, i) => (
               <div
                 key={i}
-                className="p-3 rounded-xl bg-slate-900/90 border border-slate-800 text-xs text-slate-300 flex items-start gap-2"
+                className={`p-3 rounded-xl border text-xs flex items-start gap-2 ${
+                  endingId === 'ending3'
+                    ? 'bg-slate-900/90 border-rose-900/50 text-rose-200'
+                    : 'bg-slate-900/90 border-slate-800 text-slate-300'
+                }`}
               >
-                <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
+                {endingId === 'ending3' ? (
+                  <AlertOctagon className="w-4 h-4 text-rose-400 shrink-0 mt-0.5" />
+                ) : (
+                  <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
+                )}
                 <span>{pt}</span>
               </div>
             ))}
@@ -274,19 +298,31 @@ export const EndingScreen: React.FC<EndingScreenProps> = ({
           <span>最初に戻る</span>
         </button>
 
-        <button
-          onClick={() =>
-            onPlayAlternateRoute(endingId === 'ending1' ? 'event3B' : 'event3A')
-          }
-          className="w-full sm:w-auto px-6 py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-bold flex items-center justify-center gap-2 transition-all shadow-lg shadow-amber-500/20"
-        >
-          <GitBranch className="w-4 h-4" />
-          <span>
-            {endingId === 'ending1'
-              ? 'もう一つの分岐ルート（危機事態・イベント3B）を演習'
-              : '早期封じ込めルート（イベント3A）を演習'}
-          </span>
-        </button>
+        {endingId === 'ending3' ? (
+          <button
+            onClick={() => onPlayAlternateRoute('event3A')}
+            className="w-full sm:w-auto px-6 py-3 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 text-xs font-bold flex items-center justify-center gap-2 transition-all shadow-lg shadow-cyan-500/20"
+          >
+            <GitBranch className="w-4 h-4" />
+            <span>早期封じ込めルート（イベント3A: 調査・復旧計画）を再挑戦</span>
+          </button>
+        ) : endingId === 'ending1' ? (
+          <button
+            onClick={() => onPlayAlternateRoute('event2')}
+            className="w-full sm:w-auto px-6 py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-bold flex items-center justify-center gap-2 transition-all shadow-lg shadow-amber-500/20"
+          >
+            <GitBranch className="w-4 h-4" />
+            <span>別の経路（イベント2: 封じ込め継続）を演習</span>
+          </button>
+        ) : (
+          <button
+            onClick={() => onPlayAlternateRoute('event3A')}
+            className="w-full sm:w-auto px-6 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-bold flex items-center justify-center gap-2 transition-all shadow-lg shadow-emerald-500/20"
+          >
+            <GitBranch className="w-4 h-4" />
+            <span>最善ルート（イベント1 → 3A → 4 でエンディング1）に挑戦</span>
+          </button>
+        )}
       </div>
     </div>
   );

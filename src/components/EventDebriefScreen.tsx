@@ -3,6 +3,7 @@ import {
   ActionCard,
   DrillMode,
   EventId,
+  EndingId,
   ScenarioEvent,
   TeamEventEvaluation,
 } from '../data/types';
@@ -34,7 +35,7 @@ interface EventDebriefScreenProps {
     event3B?: { engineer: number; management: number };
     event4?: { engineer: number; management: number };
   };
-  onProceedToNextEvent: (nextEventId: EventId) => void;
+  onProceedToNextEvent: (nextDestination: EventId | EndingId) => void;
   onRetryEvent: () => void;
   onReturnToTitle: () => void;
 }
@@ -163,7 +164,7 @@ export const EventDebriefScreen: React.FC<EventDebriefScreenProps> = ({
               <div className="p-2.5 rounded-xl bg-slate-950 border border-slate-800 flex items-center gap-2">
                 <XCircle className="w-4 h-4 text-rose-400 shrink-0" />
                 <div>
-                  <div className="text-[10px] text-slate-400">トラップBadカード</div>
+                  <div className="text-[10px] text-slate-400">非推奨アクション</div>
                   <div className="font-bold text-white font-mono">{engineerEval.incorrectSelections.length} 枚選択</div>
                 </div>
               </div>
@@ -209,7 +210,7 @@ export const EventDebriefScreen: React.FC<EventDebriefScreenProps> = ({
               <div className="p-2.5 rounded-xl bg-slate-950 border border-slate-800 flex items-center gap-2">
                 <XCircle className="w-4 h-4 text-rose-400 shrink-0" />
                 <div>
-                  <div className="text-[10px] text-slate-400">トラップBadカード</div>
+                  <div className="text-[10px] text-slate-400">非推奨アクション</div>
                   <div className="font-bold text-white font-mono">{managementEval.incorrectSelections.length} 枚選択</div>
                 </div>
               </div>
@@ -217,6 +218,74 @@ export const EventDebriefScreen: React.FC<EventDebriefScreenProps> = ({
           </div>
         )}
       </div>
+
+      {/* Branching Announcement (Displayed on Event 1) */}
+      {currentEvent.id === 'event1' && (
+        <div className="mb-8 p-6 rounded-2xl bg-slate-900 border border-cyan-500/40 shadow-xl">
+          <div className="flex items-center gap-2 text-xs font-mono text-cyan-400 mb-2">
+            <GitBranch className="w-4 h-4" />
+            <span>NEXT PHASE SELECTION · 次の進行ルート選択</span>
+          </div>
+
+          <h3 className="text-lg font-bold text-white mb-2">
+            初動対応完了後の移行フェーズを選択してください
+          </h3>
+
+          <p className="text-sm text-slate-300 leading-relaxed mb-4">
+            初動判定の結果を受け、引き続きネットワーク・端末の隔離や証跡保全を徹底する<strong>「イベント2: 封じ込め継続」</strong>に進むか、迅速な初動により早期封じ込めに成功した想定で<strong>「イベント3A: 調査・復旧計画」</strong>へ直接進むかを選択できます。
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2 border-t border-slate-800">
+            <button
+              onClick={() => onProceedToNextEvent('event2')}
+              className="p-4 rounded-xl bg-slate-950 hover:bg-slate-800/80 border border-slate-700 hover:border-amber-400 text-left transition-all group flex flex-col justify-between"
+            >
+              <div>
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-xs font-mono font-bold text-amber-400 px-2 py-0.5 rounded bg-amber-400/10 border border-amber-400/20">
+                    標準ルート
+                  </span>
+                  <ArrowRight className="w-4 h-4 text-slate-500 group-hover:text-amber-400 transition-colors" />
+                </div>
+                <div className="text-base font-bold text-white group-hover:text-amber-400 mb-1">
+                  イベント2: 封じ込め継続 へ進む
+                </div>
+                <p className="text-xs text-slate-400 leading-relaxed">
+                  初期遮断に続いて基幹共有サーバやアカウント権限の停止・詳細ログ保全など、徹底した拡散防止フェーズを進めます。
+                </p>
+              </div>
+              <div className="mt-3 pt-3 border-t border-slate-850 text-xs text-amber-400 font-semibold flex items-center gap-1">
+                <span>イベント2を開始する</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </div>
+            </button>
+
+            <button
+              onClick={() => onProceedToNextEvent('event3A')}
+              className="p-4 rounded-xl bg-slate-950 hover:bg-slate-800/80 border border-cyan-500/40 hover:border-cyan-400 text-left transition-all group flex flex-col justify-between"
+            >
+              <div>
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-xs font-mono font-bold text-cyan-400 px-2 py-0.5 rounded bg-cyan-400/10 border border-cyan-400/20">
+                    早期初動成功ルート
+                  </span>
+                  <ArrowRight className="w-4 h-4 text-slate-500 group-hover:text-cyan-400 transition-colors" />
+                </div>
+                <div className="text-base font-bold text-white group-hover:text-cyan-400 mb-1">
+                  イベント3A: 調査・復旧計画 へ進む
+                </div>
+                <p className="text-xs text-slate-400 leading-relaxed">
+                  初動対応が迅速かつ的確に成功した想定で、直ちに侵入経路の特定・影響範囲分析および段階的な復旧計画策定へ進みます。
+                </p>
+              </div>
+              <div className="mt-3 pt-3 border-t border-slate-850 text-xs text-cyan-400 font-semibold flex items-center gap-1">
+                <span>イベント3Aを開始する</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </div>
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* Branching Announcement (Displayed on Event 2) */}
       {isEvent2 && (
@@ -240,7 +309,7 @@ export const EventDebriefScreen: React.FC<EventDebriefScreenProps> = ({
             ) : (
               <span className="text-rose-300">
                 ⚠️ 2チーム合計得点 <strong>{combinedEvent2Score}点 / 200点</strong>（基準値140点未満）：
-                初動の遅れやトラップカード選択により、ランサムウェアが基幹データベースや複数拠点へ波及しました。
+                初動の遅れや非推奨アクションの選択により、ランサムウェアが基幹データベースや複数拠点へ波及しました。
                 次のステージは危機的非常事態<strong>「イベント3B: 危機的な状況」</strong>へ進みます。
               </span>
             )}
@@ -267,6 +336,75 @@ export const EventDebriefScreen: React.FC<EventDebriefScreenProps> = ({
               }`}
             >
               イベント3B (危機的な状況) で進む
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Branching Announcement (Displayed on Event 3B) */}
+      {currentEvent.id === 'event3B' && (
+        <div className="mb-8 p-6 rounded-2xl bg-slate-900 border border-rose-500/60 shadow-xl bg-gradient-to-b from-slate-900 to-rose-950/20">
+          <div className="flex items-center gap-2 text-xs font-mono text-rose-400 mb-2">
+            <GitBranch className="w-4 h-4 text-rose-400" />
+            <span className="font-bold">CRITICAL INCIDENT BRANCH · 危機的状況の分岐</span>
+          </div>
+
+          <h3 className="text-lg font-bold text-white mb-2">
+            イベント3B到達に伴うエンディング3判定
+          </h3>
+
+          <p className="text-sm text-rose-200 leading-relaxed mb-4">
+            イベント3B（危機的な状況）を経由したため、ランサムウェア被害が重要基幹網やActive Directoryにまで波及しました。<br className="hidden sm:inline" />
+            <strong>【エンディング3: 危機的状況の継続（フォレンジック対応の継続中・会社の存亡に関わる重大事態）】</strong>へ直行します。
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2 border-t border-slate-800">
+            <button
+              onClick={() => onProceedToNextEvent('ending3')}
+              className="p-4 rounded-xl bg-rose-950/40 hover:bg-rose-900/50 border border-rose-500/60 hover:border-rose-400 text-left transition-all group flex flex-col justify-between shadow-lg shadow-rose-950/40"
+            >
+              <div>
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-xs font-mono font-bold text-rose-300 px-2 py-0.5 rounded bg-rose-500/20 border border-rose-500/30">
+                    決定エンディング
+                  </span>
+                  <ArrowRight className="w-4 h-4 text-rose-400 group-hover:translate-x-1 transition-transform" />
+                </div>
+                <div className="text-base font-bold text-white group-hover:text-rose-300 mb-1">
+                  エンディング3: 危機的状況の継続 へ進む
+                </div>
+                <p className="text-xs text-rose-200 leading-relaxed">
+                  フォレンジック対応の継続中であり、業務停止・信用失墜の長期化に伴い会社の存亡に関わる危機的な状態が続いている最終報告書を確認します。
+                </p>
+              </div>
+              <div className="mt-3 pt-3 border-t border-rose-900/50 text-xs text-rose-300 font-semibold flex items-center gap-1">
+                <span>エンディング3の結果を見る</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </div>
+            </button>
+
+            <button
+              onClick={() => onProceedToNextEvent('event3A')}
+              className="p-4 rounded-xl bg-slate-950 hover:bg-slate-850 border border-slate-700 hover:border-amber-400 text-left transition-all group flex flex-col justify-between"
+            >
+              <div>
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-xs font-mono font-bold text-amber-400 px-2 py-0.5 rounded bg-amber-400/10 border border-amber-400/20">
+                    リカバリ検証用
+                  </span>
+                  <ArrowRight className="w-4 h-4 text-slate-500 group-hover:text-amber-400 transition-colors" />
+                </div>
+                <div className="text-base font-bold text-white group-hover:text-amber-400 mb-1">
+                  イベント3A: 調査・復旧計画 をやり直す
+                </div>
+                <p className="text-xs text-slate-400 leading-relaxed">
+                  早期封じ込めに成功していた場合の「イベント3A: 調査・復旧計画」の出題に切り替えて検証演習を行います。
+                </p>
+              </div>
+              <div className="mt-3 pt-3 border-t border-slate-850 text-xs text-amber-400 font-semibold flex items-center gap-1">
+                <span>イベント3Aを体験する</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </div>
             </button>
           </div>
         </div>
@@ -491,17 +629,72 @@ export const EventDebriefScreen: React.FC<EventDebriefScreenProps> = ({
           </button>
         </div>
 
-        <button
-          onClick={handleNext}
-          className="w-full sm:w-auto px-8 py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-sm flex items-center justify-center gap-2 shadow-lg shadow-amber-500/20 transition-all active:scale-[0.99]"
-        >
-          <span>
-            {currentEvent.id === 'event4'
-              ? '最終評価とエンディングへ進む'
-              : '次のイベントへ進む'}
-          </span>
-          <ArrowRight className="w-4 h-4" />
-        </button>
+        {/* Next navigation buttons based on current event */}
+        <div className="flex flex-wrap items-center gap-3 w-full sm:w-auto">
+          {currentEvent.id === 'event1' ? (
+            <>
+              <button
+                onClick={() => onProceedToNextEvent('event2')}
+                className="flex-1 sm:flex-none px-5 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs sm:text-sm border border-slate-750 flex items-center justify-center gap-1.5 transition-all shadow-md active:scale-[0.99]"
+              >
+                <span>イベント2 (封じ込め継続) へ</span>
+                <ArrowRight className="w-4 h-4 text-amber-400" />
+              </button>
+              <button
+                onClick={() => onProceedToNextEvent('event3A')}
+                className="flex-1 sm:flex-none px-6 py-3 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs sm:text-sm flex items-center justify-center gap-1.5 shadow-lg shadow-cyan-500/20 transition-all active:scale-[0.99]"
+              >
+                <span>イベント3A (調査・復旧計画) へ</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            </>
+          ) : currentEvent.id === 'event3B' ? (
+            <>
+              <button
+                onClick={() => onProceedToNextEvent('ending3')}
+                className="flex-1 sm:flex-none px-6 py-3 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-1.5 shadow-lg shadow-rose-600/30 transition-all active:scale-[0.99]"
+              >
+                <span>エンディング3 (危機的状況の継続) へ進む</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+              <button
+                onClick={() => onProceedToNextEvent('event3A')}
+                className="flex-1 sm:flex-none px-5 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white font-bold text-xs sm:text-sm border border-slate-700 flex items-center justify-center gap-1.5 transition-all active:scale-[0.99]"
+              >
+                <span>イベント3A (調査・復旧計画) に戻る</span>
+                <ArrowRight className="w-4 h-4 text-amber-400" />
+              </button>
+            </>
+          ) : currentEvent.id === 'event2' ? (
+            <button
+              onClick={() => onProceedToNextEvent(targetedBranch)}
+              className="w-full sm:w-auto px-8 py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-sm flex items-center justify-center gap-2 shadow-lg shadow-amber-500/20 transition-all active:scale-[0.99]"
+            >
+              <span>
+                {targetedBranch === 'event3A'
+                  ? 'イベント3A (調査・復旧計画) へ進む'
+                  : 'イベント3B (危機的な状況) へ進む'}
+              </span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          ) : currentEvent.id === 'event3A' ? (
+            <button
+              onClick={() => onProceedToNextEvent('event4')}
+              className="w-full sm:w-auto px-8 py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-sm flex items-center justify-center gap-2 shadow-lg shadow-amber-500/20 transition-all active:scale-[0.99]"
+            >
+              <span>イベント4 (復旧・再稼働) へ進む</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          ) : (
+            <button
+              onClick={() => onProceedToNextEvent('event4')}
+              className="w-full sm:w-auto px-8 py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-sm flex items-center justify-center gap-2 shadow-lg shadow-amber-500/20 transition-all active:scale-[0.99]"
+            >
+              <span>最終評価とエンディングへ進む</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          )}
+        </div>
       </div>
 
       {/* Detail Modal */}

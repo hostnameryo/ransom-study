@@ -1,4 +1,4 @@
-import { EventId, ScenarioEvent } from './types';
+import { EventId, ScenarioEvent, EndingId } from './types';
 import { engineerCards } from './engineerCards';
 import { managementCards } from './managementCards';
 
@@ -56,7 +56,7 @@ export const scenarioEvents: ScenarioEvent[] = [
 ];
 
 export interface EndingData {
-  id: 'ending1' | 'ending2';
+  id: EndingId;
   title: string;
   subtitle: string;
   conditionDescription: string;
@@ -64,12 +64,12 @@ export interface EndingData {
   evaluationPoints: string[];
 }
 
-export const endingDefinitions: Record<'ending1' | 'ending2', EndingData> = {
+export const endingDefinitions: Record<EndingId, EndingData> = {
   ending1: {
     id: 'ending1',
     title: 'エンディング1: 早期封じ込め・段階的な再開',
     subtitle: '早期封じ込めと冷静な経営指揮によるレジリエンス達成',
-    conditionDescription: 'イベント1・2で的確な拡散防止を行い、イベント3A（調査・復旧計画）を経て安全な段階的再開を果たした最善のシナリオ。',
+    conditionDescription: 'イベント1からイベント3A（調査・復旧計画）、イベント4（復旧・再稼働）へと進み、安全な段階的再開を果たした最善のシナリオ。',
     narrative: 'エンジニアチームの迅速なネットワーク隔離・アカウント制御と、マネジメントチームの明確な指揮系統構築により、ランサムウェアの被害を最小限の領域で食い止めました。バックアップの完全性を維持したまま、クリーン環境での検証を経て安全に基幹業務を再開。取引先や社会への信頼を維持し、強固なインシデント対応体制を確立しました。',
     evaluationPoints: [
       '初動3時間以内の拡散防止措置（ネットワーク隔離、共有サーバ停止、バックアップ保護）が完璧に機能',
@@ -82,13 +82,26 @@ export const endingDefinitions: Record<'ending1' | 'ending2', EndingData> = {
     id: 'ending2',
     title: 'エンディング2: フォレンジック対応',
     subtitle: '深刻な危機を徹底した証跡保全と専門機関連携で克服',
-    conditionDescription: '危機的な状況（イベント3B）に直面しながらも、電源保持やログ保全を徹底し、外部フォレンジックおよび公的機関と連携して事態を収束させたシナリオ。',
-    narrative: '重要システムへの感染波及という重大な危機に直面したものの、現場は安易な再起動や初期化を行わず、証跡を厳格に保持（電源保持、ディスクイメージ取得、ログ退避）。外部フォレンジック専門会社や警察・IPAと緊密に連携し、侵入経路の全容を解明しました。苦難の経験を糧に、抜本的なセキュリティアーキテクチャの刷新へと繋げました。',
+    conditionDescription: 'イベント2（封じ込め継続）を経由して慎重な隔離・証跡保全を継続し、外部フォレンジックおよび公的機関と連携して事態を収束させたシナリオ。',
+    narrative: '重要システムへの感染リスクに直面したものの、現場は安易な再起動や初期化を行わず、証跡を厳格に保持（電源保持、ディスクイメージ取得、ログ退避）。外部フォレンジック専門会社や警察・IPAと緊密に連携し、侵入経路の全容を解明しました。苦難の経験を糧に、抜本的なセキュリティアーキテクチャの刷新へと繋げました。',
     evaluationPoints: [
       '危機的状況でも慌てず証跡（メモリ、通信ログ、イメージ）を完全保全し、法的リスクを最小化',
       '代替業務（手動・紙・予備回線）を迅速に展開し、最低限の事業継続（BCP）を維持',
       '外部専門機関（フォレンジック・弁護士）および公的機関（警察・IPA）との連携を的確に実施',
       '攻撃者の潜伏経路を徹底特定し、全社的なセキュリティ機器の再点検と監視体制を確立'
+    ]
+  },
+  ending3: {
+    id: 'ending3',
+    title: 'エンディング3: 危機的状況の継続（会社の存亡に関わる重大事態）',
+    subtitle: 'フォレンジック対応の継続中・会社の存亡に関わる危機的な状態が継続',
+    conditionDescription: 'イベント3B（危機的な状況）に突入したことにより、被害が基幹網へ拡大。フォレンジック対応を継続しているものの、事業停止と信用失墜が長期化し、会社の存亡を揺るがす深刻な危機が続いているシナリオ。',
+    narrative: '重要基幹システムやActive Directory、バックアップ網にまで暗号化とデータ侵害の疑いが波及。外部フォレンジック専門機関および警察・サイバー特別捜査隊による大規模な原因究明と証跡保全が24時間体制で継続していますが、業務システムは広範囲で停止したままです。顧客データ漏洩の懸念、取引先へのサプライチェーン停止、巨額の金銭被害や賠償リスクに直面しており、まさに会社の存亡に関わる危機的な状態が続いています。',
+    evaluationPoints: [
+      'イベント3B（危機的状況）への突入により、基幹インフラへの深刻な侵害波及を許した重大インシデント',
+      '外部フォレンジック調査機関・警察が現在も総動員で調査を継続中だが、業務全面再開の目途は立たず',
+      '紙・手動による代替業務の限界と、サプライチェーン・取引先への事業停止影響が極めて深刻',
+      '初動における迅速な遮断判断と、全社レベルのサイバーBCP（事業継続計画）の抜本的再構築が至急必要'
     ]
   }
 };

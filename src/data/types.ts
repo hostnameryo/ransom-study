@@ -2,6 +2,8 @@ export type TeamId = 'engineer' | 'management';
 
 export type EventId = 'event1' | 'event2' | 'event3A' | 'event3B' | 'event4';
 
+export type EndingId = 'ending1' | 'ending2' | 'ending3';
+
 export type CardType = 'good' | 'bad';
 
 export interface ActionCard {

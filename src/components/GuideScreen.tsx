@@ -106,7 +106,7 @@ export const GuideScreen: React.FC<GuideScreenProps> = ({ onReturnToTitle }) => 
             </div>
             <p className="leading-relaxed">
               イベント1・2における2チームの合計得点が基準値（140点 / 200点）以上の場合は、感染の局所化に成功したとして<strong>「イベント3A: 調査・復旧計画」</strong>へ進みます。
-              基準値未満、あるいは危険なトラップカードを選択した場合は二次被害が発生し、<strong>「イベント3B: 危機的な状況」</strong>へ分岐します。
+              基準値未満、あるいは非推奨アクションの選択が重なった場合は二次被害が発生し、<strong>「イベント3B: 危機的な状況」</strong>へ分岐します（※各イベント結果画面からも目的のルートを選択して演習可能です）。
             </p>
           </div>
 
@@ -139,27 +139,61 @@ export const GuideScreen: React.FC<GuideScreenProps> = ({ onReturnToTitle }) => 
       <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 mb-8 shadow-xl">
         <h2 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
           <Award className="w-5 h-5 text-amber-400" />
-          <span>3. 2つのエンディング</span>
+          <span>3. 3つのエンディングと到達ルート</span>
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
-          <div className="p-4 rounded-xl bg-slate-950 border border-emerald-500/30">
-            <div className="font-bold text-emerald-400 text-sm mb-1 flex items-center gap-1.5">
-              <CheckCircle2 className="w-4 h-4" />
-              <span>エンディング1: 早期封じ込め・段階的な再開</span>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+          <div className="p-4 rounded-xl bg-slate-950 border border-emerald-500/30 flex flex-col justify-between">
+            <div>
+              <div className="font-bold text-emerald-400 text-sm mb-1 flex items-center gap-1.5">
+                <CheckCircle2 className="w-4 h-4 shrink-0" />
+                <span>エンディング1: 早期封じ込め・段階的な再開</span>
+              </div>
+              <div className="text-[11px] font-mono text-emerald-300/80 mb-2 font-semibold">
+                到達条件: イベント1 → イベント3A → イベント4
+              </div>
+              <p className="text-slate-300 leading-relaxed">
+                初動から直ちにイベント3A・イベント4へと最短かつ的確に進み、重要インフラ被害を最小限に防いで安全な段階的再開を果たした最善のシナリオです。
+              </p>
             </div>
-            <p className="text-slate-300 leading-relaxed">
-              初動3時間〜24時間の正確な技術的遮断と経営陣の統制により、最悪の基幹網停止を回避。完全な安全確認を経て業務を再開した最善のシナリオです。
-            </p>
+            <div className="mt-3 pt-2 border-t border-slate-850 text-[11px] text-emerald-400 font-mono">
+              ★ 最善レジリエンス
+            </div>
           </div>
 
-          <div className="p-4 rounded-xl bg-slate-950 border border-indigo-500/30">
-            <div className="font-bold text-indigo-400 text-sm mb-1 flex items-center gap-1.5">
-              <CheckCircle2 className="w-4 h-4" />
-              <span>エンディング2: フォレンジック対応</span>
+          <div className="p-4 rounded-xl bg-slate-950 border border-indigo-500/30 flex flex-col justify-between">
+            <div>
+              <div className="font-bold text-indigo-400 text-sm mb-1 flex items-center gap-1.5">
+                <CheckCircle2 className="w-4 h-4 shrink-0" />
+                <span>エンディング2: フォレンジック対応</span>
+              </div>
+              <div className="text-[11px] font-mono text-indigo-300/80 mb-2 font-semibold">
+                到達条件: イベント2経由などの慎重封じ込め経路
+              </div>
+              <p className="text-slate-300 leading-relaxed">
+                イベント2（封じ込め継続）を経由して慎重な隔離と証跡保全を徹底し、外部フォレンジック専門機関および公的機関との連携により事態を収束させたシナリオです。
+              </p>
             </div>
-            <p className="text-slate-300 leading-relaxed">
-              深刻な危機的状況に追い込まれながらも、証跡保全（電源保持・ログ保全）を徹底し、外部フォレンジックおよび公的機関との連携により事態を収束させた危機克服シナリオです。
-            </p>
+            <div className="mt-3 pt-2 border-t border-slate-850 text-[11px] text-indigo-400 font-mono">
+              ★ 証跡保全・公的連携
+            </div>
+          </div>
+
+          <div className="p-4 rounded-xl bg-slate-950 border border-rose-500/40 flex flex-col justify-between bg-gradient-to-b from-slate-950 to-rose-950/20">
+            <div>
+              <div className="font-bold text-rose-400 text-sm mb-1 flex items-center gap-1.5">
+                <AlertTriangle className="w-4 h-4 shrink-0" />
+                <span>エンディング3: 危機的状況の継続</span>
+              </div>
+              <div className="text-[11px] font-mono text-rose-300/90 mb-2 font-semibold">
+                到達条件: イベント3B（危機的な状況）を経由
+              </div>
+              <p className="text-slate-300 leading-relaxed">
+                イベント3Bに突入したことで基幹網への被害波及を許し、フォレンジック対応の継続中で会社の存亡に関わる重大な危機的状態が続いているシナリオです。
+              </p>
+            </div>
+            <div className="mt-3 pt-2 border-t border-rose-900/40 text-[11px] text-rose-400 font-mono font-bold">
+              ★ 会社の存亡危機
+            </div>
           </div>
         </div>
       </div>

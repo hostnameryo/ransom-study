@@ -2,6 +2,7 @@ import { useState } from 'react';
 import {
   DrillMode,
   EventId,
+  EndingId,
   TeamId,
   TeamEventEvaluation,
 } from './data/types';
@@ -37,14 +38,15 @@ export default function App() {
   >({});
 
   // Branch and Ending tracking
-  const [selectedRoute, setSelectedRoute] = useState<'event3A' | 'event3B'>('event3A');
-  const [endingId, setEndingId] = useState<'ending1' | 'ending2'>('ending1');
+  const [visitedEvents, setVisitedEvents] = useState<EventId[]>(['event1']);
+  const [endingId, setEndingId] = useState<EndingId>('ending1');
 
   const currentEvent = scenarioEvents.find((e) => e.id === currentEventId) || scenarioEvents[0];
 
   const handleStartDrill = (mode: DrillMode, startingEventId: EventId) => {
     setDrillMode(mode);
     setCurrentEventId(startingEventId);
+    setVisitedEvents([startingEventId]);
     setActiveTeam(mode === 'management' ? 'management' : 'engineer');
     setCurrentEngineerEval(null);
     setCurrentManagementEval(null);
@@ -56,6 +58,7 @@ export default function App() {
   const handleResetDrill = () => {
     setViewState('TITLE');
     setCurrentEventId('event1');
+    setVisitedEvents(['event1']);
     setCurrentEngineerEval(null);
     setCurrentManagementEval(null);
     setCumulativeScores({});
@@ -81,6 +84,10 @@ export default function App() {
             management: 0,
           },
         }));
+        // If event3B was played, transition directly to Ending 3
+        if (currentEventId === 'event3B') {
+          setEndingId('ending3');
+        }
         setViewState('EVENT_DEBRIEF');
       }
     } else {
@@ -94,28 +101,59 @@ export default function App() {
           management: evaluation.score,
         },
       }));
+      // If event3B was played, transition directly to Ending 3
+      if (currentEventId === 'event3B') {
+        setEndingId('ending3');
+      }
       setViewState('EVENT_DEBRIEF');
     }
   };
 
   // Transition from Debrief to Next Event or Ending
-  const handleProceedToNextEvent = (nextEventId: EventId) => {
-    if (currentEventId === 'event4') {
-      // Reached final ending!
-      // Ending 1 if route was 3A and good total score, otherwise Ending 2
-      const determinedEnding = selectedRoute === 'event3A' ? 'ending1' : 'ending2';
-      setEndingId(determinedEnding);
+  const handleProceedToNextEvent = (nextDestination: EventId | EndingId) => {
+    // Direct ending navigation
+    if (nextDestination === 'ending1' || nextDestination === 'ending2' || nextDestination === 'ending3') {
+      setEndingId(nextDestination);
       setViewState('ENDING');
       return;
     }
 
-    if (currentEventId === 'event2') {
-      // Branch to nextEventId (3A or 3B)
-      const branchRoute = nextEventId === 'event3B' ? 'event3B' : 'event3A';
-      setSelectedRoute(branchRoute);
+    // Rule: If 3B was ever stepped on, ending is Ending 3
+    if (visitedEvents.includes('event3B') || currentEventId === 'event3B' || nextDestination === 'event3B') {
+      // If advancing from event3B to ending or completed
+      if (currentEventId === 'event3B') {
+        setEndingId('ending3');
+        setViewState('ENDING');
+        return;
+      }
     }
 
-    setCurrentEventId(nextEventId);
+    if (currentEventId === 'event4') {
+      // Reached final ending from event4!
+      // ルール:
+      // 1. 3Bをふんだら、エンディング3
+      // 2. イベント1、イベント3A、イベント4に進んだ場合は、エンディング1
+      // 3. それ以外の経路はエンディング2
+      const hasVisited3B = visitedEvents.includes('event3B');
+      const hasVisitedEvent2 = visitedEvents.includes('event2');
+      const hasVisited3A = visitedEvents.includes('event3A');
+
+      if (hasVisited3B) {
+        setEndingId('ending3');
+      } else if (!hasVisitedEvent2 && hasVisited3A) {
+        // イベント1 -> イベント3A -> イベント4
+        setEndingId('ending1');
+      } else {
+        // それ以外の経路（例: イベント1 -> イベント2 -> イベント3A -> イベント4、など）
+        setEndingId('ending2');
+      }
+      setViewState('ENDING');
+      return;
+    }
+
+    // If destination is event3B, note that
+    setVisitedEvents((prev) => (prev.includes(nextDestination as EventId) ? prev : [...prev, nextDestination as EventId]));
+    setCurrentEventId(nextDestination as EventId);
     setActiveTeam(drillMode === 'management' ? 'management' : 'engineer');
     setCurrentEngineerEval(null);
     setCurrentManagementEval(null);
@@ -131,8 +169,7 @@ export default function App() {
 
   const handlePlayAlternateRoute = (startingEventId: EventId) => {
     // Allows trainee to play the other branch (3B or 3A)
-    const branchRoute = startingEventId === 'event3B' ? 'event3B' : 'event3A';
-    setSelectedRoute(branchRoute);
+    setVisitedEvents(['event1', startingEventId]);
     setCurrentEventId(startingEventId);
     setActiveTeam(drillMode === 'management' ? 'management' : 'engineer');
     setCurrentEngineerEval(null);

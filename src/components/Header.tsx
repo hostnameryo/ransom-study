@@ -31,8 +31,9 @@ export const Header: React.FC<HeaderProps> = ({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-8">
         {/* Zone 1: Brand wordmark */}
         <button
-          onClick={() => onSelectTab('play')}
+          onClick={onResetDrill}
           className="text-base sm:text-lg font-bold tracking-tight text-white hover:text-amber-400 transition-colors whitespace-nowrap shrink-0 text-left"
+          title="トップ画面（演習選択）に戻る"
         >
           ランサムウェア対応訓練シミュレーター
         </button>
@@ -92,15 +93,14 @@ export const Header: React.FC<HeaderProps> = ({
             {soundOn ? <Volume2 className="w-5 h-5" /> : <VolumeX className="w-5 h-5 text-slate-500" />}
           </button>
 
-          {hasActiveSession && (
-            <button
-              onClick={onResetDrill}
-              className="px-3 py-1.5 text-xs font-semibold text-slate-300 hover:text-white bg-slate-900 hover:bg-slate-800 border border-slate-700 rounded-lg transition-colors flex items-center gap-1.5 whitespace-nowrap shrink-0"
-            >
-              <Home className="w-3.5 h-3.5 text-amber-400" />
-              最初に戻る
-            </button>
-          )}
+          <button
+            onClick={onResetDrill}
+            className="px-3 py-1.5 text-xs font-semibold text-slate-300 hover:text-white bg-slate-900 hover:bg-slate-800 border border-slate-700 rounded-lg transition-colors flex items-center gap-1.5 whitespace-nowrap shrink-0"
+            title="トップ画面に戻る"
+          >
+            <Home className="w-3.5 h-3.5 text-amber-400" />
+            最初に戻る
+          </button>
         </div>
       </div>
 
