@@ -68,7 +68,7 @@ export const CardDetailModal: React.FC<CardDetailModalProps> = ({
               ) : (
                 <>
                   <AlertTriangle className="w-4 h-4 text-rose-400" />
-                  <span>不適切・トラップ (Badカード)</span>
+                  <span>非推奨アクション (Badカード)</span>
                 </>
               )}
               {card.priorityRank && (
@@ -85,7 +85,7 @@ export const CardDetailModal: React.FC<CardDetailModalProps> = ({
           <div className="p-3 rounded-lg bg-slate-800/40 border border-slate-800 text-xs text-slate-400 flex items-start gap-2">
             <ShieldAlert className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
             <p>
-              このカードがインシデント初動・封じ込めにおいて適切か、あるいは二次被害を招くトラップかを判断して選択してください。
+              このアクションがインシデント初動・封じ込めにおいて適切か、あるいは二次被害や判断遅延を招く非推奨策かを判断して選択してください。
             </p>
           </div>
         )}

@@ -134,7 +134,7 @@ export const engineerCards: ActionCard[] = [
     title: '再起動の実施',
     description: '端末の動作が不安定なため、状況確認を目的として一時的に再起動する。',
     reason: '誤り：再起動で証拠が失われるため、故意に再起動は行わず証拠保全を行う必要がある。',
-    priorityCategory: '落とし穴（証跡喪失）'
+    priorityCategory: '証跡保存'
   },
   {
     id: 'eng_ev1_b2',
@@ -145,7 +145,7 @@ export const engineerCards: ActionCard[] = [
     title: 'ネットワークの設定変更',
     description: '感染拡大を防ぐ目的で、ルーターおよび端末側のネットワーク設定を手動で変更する。',
     reason: '誤り：手動変更は混乱や誤設定を招くため、影響を把握した上で資料等を用いた統一した手順に沿って対処する必要がある。',
-    priorityCategory: '落とし穴（誤設定・混乱）'
+    priorityCategory: '拡散防止'
   },
   {
     id: 'eng_ev1_b3',
@@ -156,7 +156,7 @@ export const engineerCards: ActionCard[] = [
     title: 'ファイルの削除',
     description: '感染ファイルと推定されるデータがあったため、拡散リスクを抑止する目的で削除する。',
     reason: '誤り：削除すると証拠が失われるため、削除せず隔離して保全する必要がある。',
-    priorityCategory: '落とし穴（証跡破壊）'
+    priorityCategory: '証跡保存'
   },
   {
     id: 'eng_ev1_b4',
@@ -167,7 +167,7 @@ export const engineerCards: ActionCard[] = [
     title: 'USBへデータを退避',
     description: '重要なデータを保存するため、USBなどの外部ストレージへファイルをコピーして退避する。',
     reason: '誤り：感染データを外部へ持ち出すリスクがあるため、退避は隔離された安全な環境で実施する必要がある。',
-    priorityCategory: '落とし穴（二次感染拡散）'
+    priorityCategory: '証跡保存'
   },
   {
     id: 'eng_ev1_b5',
@@ -178,7 +178,7 @@ export const engineerCards: ActionCard[] = [
     title: 'ログ容量の確保',
     description: 'ログの容量が多いため、調査に必要な部分のみを抽出して確保する。',
     reason: '誤り：ログの抜粋を行ってしまうと、重要なログを取り逃すため、ログは全体を保全した上で分析時に絞る必要がある。',
-    priorityCategory: '落とし穴（重要ログ欠損）'
+    priorityCategory: '証跡保存'
   },
   {
     id: 'eng_ev1_b6',
@@ -189,7 +189,7 @@ export const engineerCards: ActionCard[] = [
     title: '設定変更後に報告',
     description: '現場対応の迅速化を図るため、必要な設定変更を行った後にまとめて報告する。',
     reason: '誤り：事後報告だと全体把握が遅れるため、変更前に共有し統一した方針のもとで進める必要がある。',
-    priorityCategory: '落とし穴（統制喪失）'
+    priorityCategory: '分析・制御・支援'
   },
   {
     id: 'eng_ev1_b7',
@@ -200,7 +200,7 @@ export const engineerCards: ActionCard[] = [
     title: 'スピード重視の対応',
     description: '過去の事例を考慮し、影響度の高い領域から優先的に対応を進めた。',
     reason: '誤り：影響度だけで判断すると見落としが出るため、影響度と重要度を併せて優先順位を決める必要がある。',
-    priorityCategory: '落とし穴（判断の偏り）'
+    priorityCategory: '分析・制御・支援'
   },
   {
     id: 'eng_ev1_b8',
@@ -211,7 +211,7 @@ export const engineerCards: ActionCard[] = [
     title: 'テスト目的の再稼働',
     description: '影響が少ないと判断される範囲に限定し、テスト目的で一部のシステムを段階的に再稼働させる。',
     reason: '誤り：判断が誤っていた場合、リスクが広がるため、再稼働前に安全性を十分に確認する必要がある。',
-    priorityCategory: '落とし穴（再感染リスク）'
+    priorityCategory: '拡散防止'
   },
   {
     id: 'eng_ev1_b9',
@@ -222,7 +222,7 @@ export const engineerCards: ActionCard[] = [
     title: 'システム稼働の先行',
     description: '業務への影響が生じており、早急な復旧が求められたシステムやサービスについて優先的に対応した。',
     reason: '誤り：急いで対応を行うと見落としが残るため、復旧前に安全性を確保しつつ慎重に確認を行う必要がある。',
-    priorityCategory: '落とし穴（安全確認不足）'
+    priorityCategory: '拡散防止'
   },
   {
     id: 'eng_ev1_b10',
@@ -233,7 +233,7 @@ export const engineerCards: ActionCard[] = [
     title: '管理者パスワードの変更',
     description: 'セキュリティ強化のため、管理者IDのパスワードを変更する。',
     reason: '誤り：パスワードをのぞき見されている可能性があり、感染状況下で変更すると漏えいの恐れがあるため、安全性が確保できたタイミングで変更する必要がある。',
-    priorityCategory: '落とし穴（認証漏えいリスク）'
+    priorityCategory: '拡散防止'
   },
 
   // ==========================================
@@ -369,7 +369,7 @@ export const engineerCards: ActionCard[] = [
     title: '感染端末の初期化',
     description: '早期復旧を図るため、感染端末を初期化して再設定を行う。',
     reason: '誤り：初期化すると証拠が失われるため、初期化の前に証拠保全と状況確認を行う必要がある。',
-    priorityCategory: '落とし穴（証跡破壊）'
+    priorityCategory: '調査・調査準備'
   },
   {
     id: 'eng_ev2_b2',
@@ -380,7 +380,7 @@ export const engineerCards: ActionCard[] = [
     title: '共有サーバーの動作確認',
     description: '状況を確認するため、一時的にサーバーを再接続し挙動を観察する。',
     reason: '誤り：再接続は感染拡大のリスクがあるため、観察は隔離環境で安全を確保したうえで行う必要がある。',
-    priorityCategory: '落とし穴（再接続リスク）'
+    priorityCategory: '拡散防止'
   },
   {
     id: 'eng_ev2_b3',
@@ -391,7 +391,7 @@ export const engineerCards: ActionCard[] = [
     title: '隔離端末の部分的な復帰',
     description: '現段階で問題がないと判断された隔離された端末から、通信を再開してテストを行う。',
     reason: '誤り：判断が誤っている場合、リスクが広がるため、再開前に安全性を厳密に確認する必要がある。',
-    priorityCategory: '落とし穴（拙速な再開）'
+    priorityCategory: '拡散防止'
   },
   {
     id: 'eng_ev2_b4',
@@ -402,7 +402,7 @@ export const engineerCards: ActionCard[] = [
     title: '検知アラートの制限',
     description: '通知が多く対応に支障をきたす場合、一部のアラートを無効化して対応を進めやすくする。',
     reason: '誤り：アラートの一部を無効化してしまうと、重要な検知を逃すため、現段階ではアラートのチューニングを行わず、復旧フェーズで実施する。',
-    priorityCategory: '落とし穴（監視ブラインド）'
+    priorityCategory: '調査・調査準備'
   },
   {
     id: 'eng_ev2_b5',
@@ -413,7 +413,7 @@ export const engineerCards: ActionCard[] = [
     title: '通信制御の広範適用',
     description: '感染拡大を防止する目的で、ネットワーク全体に通信制御を行う。',
     reason: '誤り：全体の通信制御は業務影響が大きすぎるため、影響範囲を把握したうえで必要箇所に限定して制御する必要がある。',
-    priorityCategory: '落とし穴（過剰遮断）'
+    priorityCategory: '拡散防止'
   },
   {
     id: 'eng_ev2_b6',
@@ -424,7 +424,7 @@ export const engineerCards: ActionCard[] = [
     title: 'ログ抽出の限定化',
     description: 'タイムロスを減らすため、主要サーバーのログを優先的に確認する。',
     reason: '誤り：主要な箇所だけだと重要なログを見落とすため、全体を保全したうえで分析時に優先順位を付ける必要がある。',
-    priorityCategory: '落とし穴（ログ見落とし）'
+    priorityCategory: '調査・調査準備'
   },
   {
     id: 'eng_ev2_b7',
@@ -435,7 +435,7 @@ export const engineerCards: ActionCard[] = [
     title: '自動駆除ツールの使用',
     description: '感染端末に自社の自動駆除ツールを適用し、感染除去を実施する。',
     reason: '誤り：状況によっては誤動作や証拠消失を招くため、駆除の前に証拠保全と影響確認を行う必要がある。',
-    priorityCategory: '落とし穴（証拠消失リスク）'
+    priorityCategory: '被害の最小化'
   },
   {
     id: 'eng_ev2_b8',
@@ -446,7 +446,7 @@ export const engineerCards: ActionCard[] = [
     title: '別経路での通信の切替',
     description: '通信障害を避ける目的で、一部の拠点を別経路に切り替えて接続する。',
     reason: '誤り：別経路が安全とは限らず、リスクが拡散するため、切替前に経路の安全性を確認する必要がある。',
-    priorityCategory: '落とし穴（感染迂回）'
+    priorityCategory: '拡散防止'
   },
   {
     id: 'eng_ev2_b9',
@@ -457,7 +457,7 @@ export const engineerCards: ActionCard[] = [
     title: 'バックアップの展開',
     description: '早期復旧を重視し、安全確認の前にバックアップデータを戻す。',
     reason: '誤り：汚染されたバックアップだと再発するため、復元前にバックアップの安全性を確認する必要がある。',
-    priorityCategory: '落とし穴（汚染再発）'
+    priorityCategory: '被害の最小化'
   },
   {
     id: 'eng_ev2_b10',
@@ -468,7 +468,7 @@ export const engineerCards: ActionCard[] = [
     title: '進捗をチャットで共有',
     description: 'チーム全体での連携を確保する目的で、対応内容をまとめてチャットで共有する。',
     reason: '誤り：チャットのみだと抜け漏れが出る可能性があるため、チケット化等で正式な記録と共有ルールを併用して管理する必要がある。',
-    priorityCategory: '落とし穴（非公式連絡による漏れ）'
+    priorityCategory: '支援'
   },
 
   // ==========================================
@@ -604,7 +604,7 @@ export const engineerCards: ActionCard[] = [
     title: 'ログの整理',
     description: '分析を円滑に進めるため、古いログや不要な情報を削除し整理する。',
     reason: '誤り：古いログ等を削除すると証拠が失われるため、分析前にログを削除・整理せず、すべてのログを保全する必要がある。',
-    priorityCategory: '落とし穴（証拠隠滅）'
+    priorityCategory: '調査・分析'
   },
   {
     id: 'eng_ev3A_b2',
@@ -615,7 +615,7 @@ export const engineerCards: ActionCard[] = [
     title: '過去事例との照合',
     description: '過去のインシデントおよび他社事例を参考に、原因を分析・推定する。',
     reason: '誤り：過去事例の依存は誤った推定につながるため、実際の証拠とログに基づいて分析をする必要がある。',
-    priorityCategory: '落とし穴（根拠なき推測）'
+    priorityCategory: '調査・分析'
   },
   {
     id: 'eng_ev3A_b3',
@@ -626,7 +626,7 @@ export const engineerCards: ActionCard[] = [
     title: '主要なシステムを中心に調査',
     description: 'まず主要なシステムを中心に、ログおよび動作状況を確認する。',
     reason: '誤り：主要な箇所だけだと見落としが発生するため、全体のログを保全したうえで優先順位を付けて分析する必要がある。',
-    priorityCategory: '落とし穴（調査範囲の盲点）'
+    priorityCategory: '調査・分析'
   },
   {
     id: 'eng_ev3A_b4',
@@ -637,7 +637,7 @@ export const engineerCards: ActionCard[] = [
     title: 'ログ抽出の絞り込み',
     description: '対象が膨大なため、ログを抽出する条件を絞り込む。',
     reason: '誤り：ログの抽出を絞り込んでしまうと、重要な情報を取り逃すため、絞り込みは分析時に限定し、元データは保持する必要がある。',
-    priorityCategory: '落とし穴（元データ欠損）'
+    priorityCategory: '調査・分析'
   },
   {
     id: 'eng_ev3A_b5',
@@ -648,7 +648,7 @@ export const engineerCards: ActionCard[] = [
     title: '感染したフォルダの調査',
     description: '調査を迅速に行うため、感染が疑われるフォルダから数件を抽出し、状態を確認する。',
     reason: '誤り：調査対象を絞ると他の感染痕跡を見逃すため、フォルダ全体を保全したうえで分析する必要がある。',
-    priorityCategory: '落とし穴（サンプリング過誤）'
+    priorityCategory: '調査・分析'
   },
   {
     id: 'eng_ev3A_b6',
@@ -659,7 +659,7 @@ export const engineerCards: ActionCard[] = [
     title: '稼働環境の維持',
     description: '業務影響を考慮しサービスを停止することなく、稼働環境のシステム設定を調整する。',
     reason: '誤り：システムの停止によって反映される項目もあり、稼働中のシステム設定の変更は影響が読めず混乱を招くため、停止や隔離のうえで安全を確認して調整する必要がある。',
-    priorityCategory: '落とし穴（稼働中変更リスク）'
+    priorityCategory: '復旧・復元'
   },
   {
     id: 'eng_ev3A_b7',
@@ -670,7 +670,7 @@ export const engineerCards: ActionCard[] = [
     title: '試験的な復旧の実施',
     description: '早期復旧のため、復旧手順書はないが一部の端末で復旧作業を進めつつ、手順書を並行して作成する。',
     reason: '誤り：並行作業は手順の不一致を招くため、先に暫定手順を作り共通方針を定めてから復旧を進める必要がある。',
-    priorityCategory: '落とし穴（手順なき先行）'
+    priorityCategory: '復旧・復元'
   },
   {
     id: 'eng_ev3A_b8',
@@ -681,7 +681,7 @@ export const engineerCards: ActionCard[] = [
     title: '社内調査の優先',
     description: '自部署で対応が可能と思われるため、外部の機関への対応依頼を行わず、独自に分析を開始する。',
     reason: '誤り：内部だけでは見落としが出る可能性があるため、必要に応じて外部専門家の知見も併用する必要がある。',
-    priorityCategory: '落とし穴（独断・自前主義）'
+    priorityCategory: '支援'
   },
   {
     id: 'eng_ev3A_b9',
@@ -692,7 +692,7 @@ export const engineerCards: ActionCard[] = [
     title: '簡易報告書の作成',
     description: '迅速に報告書を提出する必要が発生したため、一部の検証は省略して結果だけを記載する。',
     reason: '誤り：検証不足は誤報につながるため、最低限の裏付けを確認したうえで報告する必要がある。',
-    priorityCategory: '落とし穴（検証不足の誤報）'
+    priorityCategory: '支援'
   },
   {
     id: 'eng_ev3A_b10',
@@ -703,7 +703,7 @@ export const engineerCards: ActionCard[] = [
     title: '現状についての速報',
     description: '判明している内容を速報としてチーム全体に伝え、正式な報告書は必要になった時点で作成する。',
     reason: '誤り：速報だけでは誤解が生じるため、速報と並行して正式な報告書も段階的に準備する必要がある。',
-    priorityCategory: '落とし穴（記録の形骸化）'
+    priorityCategory: '支援'
   },
 
   // ==========================================
@@ -839,7 +839,7 @@ export const engineerCards: ActionCard[] = [
     title: 'ネットワークの全停止',
     description: '感染拡大を止めるため、全拠点の通信を遮断する。',
     reason: '誤り：全遮断は業務停止が大きすぎるため、影響範囲を確認し必要箇所に限定して制御する必要がある。',
-    priorityCategory: '落とし穴（過剰遮断）'
+    priorityCategory: '被害の最小化'
   },
   {
     id: 'eng_ev3B_b2',
@@ -850,7 +850,7 @@ export const engineerCards: ActionCard[] = [
     title: '端末の一斉シャットダウン',
     description: '感染の疑わしい端末を含むシステムを一斉に停止して被害を防ぐ。',
     reason: '誤り：一斉停止の判断は事業継続に関わる影響が大きすぎるため、優先度と影響範囲を見極めて段階的に隔離する必要がある。',
-    priorityCategory: '落とし穴（証拠消失・事業破綻）'
+    priorityCategory: '被害の最小化'
   },
   {
     id: 'eng_ev3B_b3',
@@ -861,7 +861,7 @@ export const engineerCards: ActionCard[] = [
     title: 'バックアップの即時復旧',
     description: '業務継続が最優先のため、早急にバックアップからシステムを戻す。',
     reason: '誤り：安全性が未確認の復元は再発につながるため、バックアップの健全性を確認してからシステムを復元する必要がある。',
-    priorityCategory: '落とし穴（汚染再発）'
+    priorityCategory: '復旧準備'
   },
   {
     id: 'eng_ev3B_b4',
@@ -872,7 +872,7 @@ export const engineerCards: ActionCard[] = [
     title: '管理者権限の一括変更',
     description: '緊急対策として、全管理者のパスワードを一斉変更する。',
     reason: '誤り：感染状況下では変更情報が漏れるおそれがあるため、安全性を確保した後に、段階的に変更する必要がある。',
-    priorityCategory: '落とし穴（情報漏えいリスク）'
+    priorityCategory: '被害の最小化'
   },
   {
     id: 'eng_ev3B_b5',
@@ -883,7 +883,7 @@ export const engineerCards: ActionCard[] = [
     title: '最新のログを優先的に収集、確認',
     description: '最新の状況を把握するため、リアルタイムログを優先的に収集、確認をする。',
     reason: '誤り：過去ログの情報を見落とすと分析が不完全になるため、リアルタイムログと過去ログの両方を確実に保全する必要がある。',
-    priorityCategory: '落とし穴（過去痕跡の見落とし）'
+    priorityCategory: '調査・分析'
   },
   {
     id: 'eng_ev3B_b6',
@@ -894,7 +894,7 @@ export const engineerCards: ActionCard[] = [
     title: '影響範囲の報告',
     description: '進捗を共有するため、暫定的な影響範囲をまとめて報告する。',
     reason: '誤り：暫定的な情報だけでは誤解が生じるため、確定情報と調査中の情報を区別して報告する必要がある。',
-    priorityCategory: '落とし穴（未確定情報の混同）'
+    priorityCategory: '支援'
   },
   {
     id: 'eng_ev3B_b7',
@@ -905,7 +905,7 @@ export const engineerCards: ActionCard[] = [
     title: '臨時サーバーの立ち上げ',
     description: '一時的に業務を動かすため、新しいサーバーを早急に構築する。',
     reason: '誤り：未検証の構築は不具合や再発を招くため、安全性と要件を確認したうえで計画的に構築する必要がある。',
-    priorityCategory: '落とし穴（未検証インフラ）'
+    priorityCategory: '復旧準備'
   },
   {
     id: 'eng_ev3B_b8',
@@ -916,7 +916,7 @@ export const engineerCards: ActionCard[] = [
     title: '外部への対応依頼',
     description: '急を要するため、先に外部業者に直接支援を要請する。',
     reason: '誤り：状況整理前の依頼は誤対応を招くため、最低限の現状把握を行ったうえで依頼内容を明確化する必要がある。',
-    priorityCategory: '落とし穴（要件不明確な丸投げ）'
+    priorityCategory: '支援'
   },
   {
     id: 'eng_ev3B_b9',
@@ -927,7 +927,7 @@ export const engineerCards: ActionCard[] = [
     title: '報告書の管理',
     description: '各担当者がそれぞれメモを残して状況を記録し、上長へ報告する。',
     reason: '誤り：個別の記録や情報では正しい判断が行えないため、統一した記録の方法や報告の方法で、一元管理する必要がある。',
-    priorityCategory: '落とし穴（情報散逸）'
+    priorityCategory: '支援'
   },
   {
     id: 'eng_ev3B_b10',
@@ -938,7 +938,7 @@ export const engineerCards: ActionCard[] = [
     title: '社内へ一斉通達',
     description: '状況を明確にするため、全社に一斉通知を行う。',
     reason: '誤り：不確定情報を含む一斉通知は混乱を招くため、内容を精査し必要範囲に限定して通知する必要がある。',
-    priorityCategory: '落とし穴（社内パニック誘発）'
+    priorityCategory: '支援'
   },
 
   // ==========================================
@@ -1074,7 +1074,7 @@ export const engineerCards: ActionCard[] = [
     title: 'システムの全面的な再構築',
     description: '恒久対策として既存の環境を刷新し、より強固なシステム基盤を新規に構築する。',
     reason: '誤り：全面的な刷新は時間とコストが必要となり復旧が遅れるおそれがあるため、まずは既存環境の問題箇所を優先的に改善して段階的に強化する必要がある。',
-    priorityCategory: '落とし穴（過度な長期化）'
+    priorityCategory: '復旧準備・対応'
   },
   {
     id: 'eng_ev4_b2',
@@ -1085,7 +1085,7 @@ export const engineerCards: ActionCard[] = [
     title: '業務優先の再稼働',
     description: '社会的な影響を最小化するため、復旧可能な範囲から段階的に業務を再開する。',
     reason: '誤り：影響を十分に確認せずに再開すると問題が拡大するおそれがあるため、全体の安全性を評価した上で再開範囲を慎重に決める必要がある。',
-    priorityCategory: '落とし穴（安全未確認の再開）'
+    priorityCategory: '復旧準備・対応'
   },
   {
     id: 'eng_ev4_b3',
@@ -1096,7 +1096,7 @@ export const engineerCards: ActionCard[] = [
     title: '報告の簡素化',
     description: '発生原因を明確にし、主な要因に絞った報告を実施し、対応を迅速化する。',
     reason: '誤り：主な要因だけに絞ると他の重要な原因を見落とすおそれがあるため、主な要因と併せて関連する要因も整理し、バランスよく報告する必要がある。',
-    priorityCategory: '落とし穴（原因見落とし）'
+    priorityCategory: '支援'
   },
   {
     id: 'eng_ev4_b4',
@@ -1107,7 +1107,7 @@ export const engineerCards: ActionCard[] = [
     title: 'データの保全範囲を限定',
     description: '調査効率を向上させるため、影響の大きい範囲を優先的にデータの保全を行う。',
     reason: '誤り：優先範囲を限定しすぎると重要なデータを取り逃すおそれがあるため、影響度と重要度の両方を考慮して保全対象を選ぶ必要がある。',
-    priorityCategory: '落とし穴（証拠取り逃し）'
+    priorityCategory: '調査・証拠保全'
   },
   {
     id: 'eng_ev4_b5',
@@ -1118,7 +1118,7 @@ export const engineerCards: ActionCard[] = [
     title: '新しいセキュリティの設定を一斉適用',
     description: '再発防止を目的として、新しいセキュリティの設定を全システムへ同時に展開する。',
     reason: '誤り：全システムへ一斉に展開すると、不具合が発生した時に全体へ影響が波及するおそれがあるため、段階的に適用して対応を行う。',
-    priorityCategory: '落とし穴（一斉変更の事故リスク）'
+    priorityCategory: '復旧準備・対応'
   },
   {
     id: 'eng_ev4_b6',
@@ -1129,7 +1129,7 @@ export const engineerCards: ActionCard[] = [
     title: '被害範囲を限定的に説明',
     description: '混乱を回避するため、現時点で把握している範囲を中心に影響を説明する。',
     reason: '誤り：把握済みの範囲だけを説明すると、未確認の影響が伝わらず誤解や判断ミスを招くおそれがあるため、確定情報と未確定情報(調査中の範囲)も含めて説明する。',
-    priorityCategory: '落とし穴（未確認情報の隠蔽感）'
+    priorityCategory: '支援'
   },
   {
     id: 'eng_ev4_b7',
@@ -1140,7 +1140,7 @@ export const engineerCards: ActionCard[] = [
     title: '検証工程の短縮',
     description: '復旧スケジュールを遵守するため、検証項目をサービスの重要度順に選定し、実施する。',
     reason: '誤り：重要度だけで選ぶと見落としが出るため、影響範囲も含めて検証項目を選定する必要がある。',
-    priorityCategory: '落とし穴（検証省略の手戻り）'
+    priorityCategory: '復旧準備・対応'
   },
   {
     id: 'eng_ev4_b8',
@@ -1151,7 +1151,7 @@ export const engineerCards: ActionCard[] = [
     title: '成果報告の簡略化',
     description: '対応内容の要点を整理し、全体像を簡潔に取りまとめて報告する。',
     reason: '誤り：要点をまとめつつも、重要な前提・影響・判断理由などの欠かせない情報は省かずに併せて示す必要がある。',
-    priorityCategory: '落とし穴（根拠不足）'
+    priorityCategory: '支援'
   },
   {
     id: 'eng_ev4_b9',
@@ -1162,7 +1162,7 @@ export const engineerCards: ActionCard[] = [
     title: '専門家主導の再発防止',
     description: '専門家の知見に基づく再発防止を重視し、対策の立案を外部に委託する。',
     reason: '誤り：すべてを外部任せにすると、実情とずれる可能性があるため、自社の判断も併せて対策を検討する必要がある。',
-    priorityCategory: '落とし穴（外部丸投げ）'
+    priorityCategory: '支援'
   },
   {
     id: 'eng_ev4_b10',
@@ -1173,6 +1173,6 @@ export const engineerCards: ActionCard[] = [
     title: '対策の優先順位を決定',
     description: '対策案を一覧化し、マネジメントチームとともに、リスク評価に基づき対応の優先順位を設定して実行計画を策定する。',
     reason: '誤り：リスク評価(数値のみ)だけに依存すると現場状況とのズレが出るため、実務面の条件も踏まえて優先順位を決める必要がある。',
-    priorityCategory: '落とし穴（形式的リスク評価）'
+    priorityCategory: '支援'
   }
 ];

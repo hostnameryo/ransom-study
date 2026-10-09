@@ -134,7 +134,7 @@ export const managementCards: ActionCard[] = [
     title: '現場対応への一任',
     description: '技術的なことは専門チームに任せ、経営層は報告を待つ形とする。',
     reason: '誤り：現場を信頼する姿勢だが、初動の方向性が統一されず判断が遅れる。',
-    priorityCategory: '落とし穴（統制不全）'
+    priorityCategory: '体制の構築'
   },
   {
     id: 'mgt_ev1_b2',
@@ -145,7 +145,7 @@ export const managementCards: ActionCard[] = [
     title: '影響範囲の迅速な状況確認',
     description: '状況を早く把握するため、まずは概算でもよいので被害範囲を報告させる。',
     reason: '誤り：スピードは上がるが、未確認情報が拡散し後から混乱する。',
-    priorityCategory: '落とし穴（未確認情報拡散）'
+    priorityCategory: '調査の準備'
   },
   {
     id: 'mgt_ev1_b3',
@@ -156,7 +156,7 @@ export const managementCards: ActionCard[] = [
     title: 'システム停止の判断',
     description: '業務への影響が大きいため、現時点ではシステムを止めず状況を確認する。',
     reason: '誤り：業務優先の判断だが、感染拡大のリスクを残す。',
-    priorityCategory: '落とし穴（感染拡大放置）'
+    priorityCategory: '拡散防止'
   },
   {
     id: 'mgt_ev1_b4',
@@ -167,7 +167,7 @@ export const managementCards: ActionCard[] = [
     title: '主要取引先への迅速な連絡',
     description: '信頼維持のため、状況が確定する前に取引先へ一次報告を行う。',
     reason: '誤り：誠実に見えるが、内容訂正が続くと信用を失う。',
-    priorityCategory: '落とし穴（拙速な対外連絡）'
+    priorityCategory: '支援'
   },
   {
     id: 'mgt_ev1_b5',
@@ -178,7 +178,7 @@ export const managementCards: ActionCard[] = [
     title: '責任分担の早期整理',
     description: '早めに部署ごとの担当範囲を決め、責任体制を明確にする。',
     reason: '誤り：体制は整うが、原因不明の段階で線引きをすると連携が崩れる。',
-    priorityCategory: '落とし穴（縦割り・連携不全）'
+    priorityCategory: '体制の構築'
   },
   {
     id: 'mgt_ev1_b6',
@@ -189,7 +189,7 @@ export const managementCards: ActionCard[] = [
     title: '社内通知の検討開始',
     description: '社内の混乱を防ぐため、情報をどう出すかを先に検討する。',
     reason: '誤り：情報管理としては正しいが、技術対応よりも体裁が先行する。',
-    priorityCategory: '落とし穴（体裁先行）'
+    priorityCategory: '体制の構築'
   },
   {
     id: 'mgt_ev1_b7',
@@ -200,7 +200,7 @@ export const managementCards: ActionCard[] = [
     title: '経営陣への報告を早期に提出',
     description: '経営陣への説明のため、現場に状況の報告を求める。',
     reason: '誤り：責任感は強いが、不確定な内容が上がり誤判断を招く。',
-    priorityCategory: '落とし穴（現場負荷・誤判断）'
+    priorityCategory: '支援'
   },
   {
     id: 'mgt_ev1_b8',
@@ -211,7 +211,7 @@ export const managementCards: ActionCard[] = [
     title: '初動方針の会議を実施',
     description: '関係部門を集め、対応方針と役割分担を整理してから対応を進める。',
     reason: '誤り：丁寧な姿勢だが、現場対応の初動を止めてしまう。',
-    priorityCategory: '落とし穴（初動遅延会議）'
+    priorityCategory: '体制の構築'
   },
   {
     id: 'mgt_ev1_b9',
@@ -222,7 +222,7 @@ export const managementCards: ActionCard[] = [
     title: '行政や関係先への調整',
     description: '情報連携を円滑に進めるため、状況整理の段階から行政や関係先との調整を始める。',
     reason: '誤り：先手を打つ意識としては良いが、確定していない内容が共有され、混乱を招くおそれがある。',
-    priorityCategory: '落とし穴（早すぎる対外調整）'
+    priorityCategory: '支援'
   },
   {
     id: 'mgt_ev1_b10',
@@ -233,7 +233,7 @@ export const managementCards: ActionCard[] = [
     title: '広報対応の先行準備',
     description: '問い合わせを想定し、まず広報文の準備を進めておく。',
     reason: '誤り：体裁を優先しすぎると、技術的封じ込めが後回しになる。',
-    priorityCategory: '落とし穴（封じ込めの後回し）'
+    priorityCategory: '支援'
   },
 
   // ==========================================
@@ -369,7 +369,7 @@ export const managementCards: ActionCard[] = [
     title: '状況整理を優先する',
     description: '混乱を防ぐため、方針決定より先に状況の整理を優先する。',
     reason: '誤り：方向性が不明確なまま時間が経ち、対応が遅れる。',
-    priorityCategory: '落とし穴（方針決定の遅滞）'
+    priorityCategory: '体制の構築'
   },
   {
     id: 'mgt_ev2_b2',
@@ -380,7 +380,7 @@ export const managementCards: ActionCard[] = [
     title: '現場対応の尊重',
     description: '混乱を避けるために、技術チームの調査が十分に終わるまで経営判断を控える。',
     reason: '誤り：現場任せになり、全体の統制が失われる。',
-    priorityCategory: '落とし穴（経営判断の放棄）'
+    priorityCategory: '体制の構築'
   },
   {
     id: 'mgt_ev2_b3',
@@ -391,7 +391,7 @@ export const managementCards: ActionCard[] = [
     title: '部門間の会議',
     description: '影響把握のため、各部門を招集し会議を行う。',
     reason: '誤り：調整が長引き、封じ込め判断が後手に回る。',
-    priorityCategory: '落とし穴（長時間の調整）'
+    priorityCategory: '体制の構築'
   },
   {
     id: 'mgt_ev2_b4',
@@ -402,7 +402,7 @@ export const managementCards: ActionCard[] = [
     title: 'システム維持の検討',
     description: '業務を止めないよう極力稼働を維持する方針を模索する。',
     reason: '誤り：拡散の危険が残るシステムを動かし続けるリスク。',
-    priorityCategory: '落とし穴（無謀な稼働維持）'
+    priorityCategory: '被害の最小化'
   },
   {
     id: 'mgt_ev2_b5',
@@ -413,7 +413,7 @@ export const managementCards: ActionCard[] = [
     title: '初期段階の情報共有',
     description: '社内の不安を抑えるため、確認できている範囲の事実を中心に、情報を共有する。',
     reason: '誤り：初動段階の事実は不完全の可能性があり、落ち着いた共有により緊急性が低下する。',
-    priorityCategory: '落とし穴（中途半端な共有）'
+    priorityCategory: '支援'
   },
   {
     id: 'mgt_ev2_b6',
@@ -424,7 +424,7 @@ export const managementCards: ActionCard[] = [
     title: '詳細な報告の要求',
     description: '経営判断を正しく行うため、現場チームに対して、より具体的な状況の説明を求める。',
     reason: '誤り：現場リソースを圧迫し、封じ込め作業が遅延する。',
-    priorityCategory: '落とし穴（過剰な報告要求）'
+    priorityCategory: '調査の準備'
   },
   {
     id: 'mgt_ev2_b7',
@@ -435,7 +435,7 @@ export const managementCards: ActionCard[] = [
     title: '状況共有の整理',
     description: '経営判断を円滑に進めるため、現在把握している内容を整理し提出するよう現場に依頼する。',
     reason: '誤り：現場作業の妨げとなり、逆に対応速度が落ちる。',
-    priorityCategory: '落とし穴（現場作業阻害）'
+    priorityCategory: '調査の準備'
   },
   {
     id: 'mgt_ev2_b8',
@@ -446,7 +446,7 @@ export const managementCards: ActionCard[] = [
     title: '外部支援の調整',
     description: '社内で情報をすり合わせた後に外部ベンダーとの連携方法を検討する。',
     reason: '誤り：一見「冷静な判断」に聞こえるが、結果的に初動が遅れる。',
-    priorityCategory: '落とし穴（外部要請遅延）'
+    priorityCategory: '調査の準備'
   },
   {
     id: 'mgt_ev2_b9',
@@ -457,7 +457,7 @@ export const managementCards: ActionCard[] = [
     title: '社外向けの説明の準備',
     description: '関係先からの問い合わせに備え、説明の流れや回答の方向性を事前に整理する。',
     reason: '誤り：誠実な対応にも見えるが、現段階の情報では誤報や混乱を招く可能性。',
-    priorityCategory: '落とし穴（誤報リスク）'
+    priorityCategory: '支援'
   },
   {
     id: 'mgt_ev2_b10',
@@ -468,7 +468,7 @@ export const managementCards: ActionCard[] = [
     title: '教訓化の早期着手',
     description: '将来の対応力を高めるため、今回の状況を踏まえた改善の方向性について早めに意見を集める。',
     reason: '誤り：前向きにも見えるが、現場リソースを分散させる危険がある。',
-    priorityCategory: '落とし穴（リソース分散）'
+    priorityCategory: '支援'
   },
 
   // ==========================================
@@ -604,7 +604,7 @@ export const managementCards: ActionCard[] = [
     title: '内部分析の推進',
     description: '社内対応の範囲を詳しく整理したうえで、外部支援の必要性についてはその後に改めて検討する。',
     reason: '誤り：自社だけでは専門的な調査や証拠保全が不十分になり、判断の客観性を欠く可能性がある。',
-    priorityCategory: '落とし穴（客観性欠如）'
+    priorityCategory: '要請、調査'
   },
   {
     id: 'mgt_ev3A_b2',
@@ -615,7 +615,7 @@ export const managementCards: ActionCard[] = [
     title: '状況理解のための情報共有',
     description: '原因の全体像をつかむため、調査途中の見解や可能性について、関係者へ説明する。',
     reason: '誤り：調査途中の内容は変わりやすく、早期に説明すると誤った理解が広まる可能性がある。',
-    priorityCategory: '落とし穴（未確定見解の漏洩）'
+    priorityCategory: '支援、教訓化'
   },
   {
     id: 'mgt_ev3A_b3',
@@ -626,7 +626,7 @@ export const managementCards: ActionCard[] = [
     title: '進捗把握の強化',
     description: '状況を正確に把握するため、各部門に被害状況や進捗をこまめに共有してもらう。',
     reason: '誤り：復旧作業の最中に頻繁な共有を求めることで、現場チームの作業が分断され、調査や復旧が遅れる。',
-    priorityCategory: '落とし穴（頻繁すぎる割り込み）'
+    priorityCategory: '要請、調査'
   },
   {
     id: 'mgt_ev3A_b4',
@@ -637,7 +637,7 @@ export const managementCards: ActionCard[] = [
     title: '復旧時期の共有',
     description: '復旧に向けたおおまかな時期感や進み具合を、現段階で把握している範囲で共有する。',
     reason: '誤り：調査中の情報は変動しやすく、時期感を先に示すことで誤った期待が形成される。',
-    priorityCategory: '落とし穴（不確実な期日提示）'
+    priorityCategory: '復旧計画'
   },
   {
     id: 'mgt_ev3A_b5',
@@ -648,7 +648,7 @@ export const managementCards: ActionCard[] = [
     title: '再開手順の効率化を検討',
     description: '業務復旧を早めるため、影響が小さいシステムから順次再開できないか検討する。',
     reason: '誤り：個別の安全性確認が不十分なまま一括再開を進めると、残存リスクが見落とされる可能性がある。',
-    priorityCategory: '落とし穴（安全性確認不足）'
+    priorityCategory: '復旧計画'
   },
   {
     id: 'mgt_ev3A_b6',
@@ -659,7 +659,7 @@ export const managementCards: ActionCard[] = [
     title: '影響把握の共有',
     description: '現段階で把握している財務面の影響について、目安となる数字を先に共有する。',
     reason: '誤り：調査段階では数値が変動しやすく、早期に数字を提示すると誤った期待や判断につながり、信頼を損なう。',
-    priorityCategory: '落とし穴（変動数値の拙速共有）'
+    priorityCategory: '被害の整理'
   },
   {
     id: 'mgt_ev3A_b7',
@@ -670,7 +670,7 @@ export const managementCards: ActionCard[] = [
     title: '対外説明の準備',
     description: '現時点で把握している内容をもとに、発信に向けたポイントや構成案を検討しておく。',
     reason: '誤り：調査途中で内容が変わりやすく、早期に構成案を固めようとすると誤情報や混乱の原因になりうる。',
-    priorityCategory: '落とし穴（調査途中の構成固定）'
+    priorityCategory: '支援、教訓化'
   },
   {
     id: 'mgt_ev3A_b8',
@@ -681,7 +681,7 @@ export const managementCards: ActionCard[] = [
     title: '連絡する優先順位を整理',
     description: '社内で状況を整理し、外部向けの報告や連絡については整理が済んだ段階で進める。',
     reason: '誤り：通報が遅れることで、法的手続きや対応支援が受けられなくなるおそれがあるため、並行して行う。',
-    priorityCategory: '落とし穴（法定通報の遅れ）'
+    priorityCategory: '支援、教訓化'
   },
   {
     id: 'mgt_ev3A_b9',
@@ -692,7 +692,7 @@ export const managementCards: ActionCard[] = [
     title: '改善案の検討を開始',
     description: '対応の合間に、再発防止策や改善策の方向性を議論する。',
     reason: '誤り：現場が対応中の段階で再発防止の議論を始めると、集中が分散し封じ込めが遅れる。',
-    priorityCategory: '落とし穴（議論時期の誤り）'
+    priorityCategory: '支援、教訓化'
   },
   {
     id: 'mgt_ev3A_b10',
@@ -703,7 +703,7 @@ export const managementCards: ActionCard[] = [
     title: '終息後の報告方針の確認',
     description: '対応が落ち着いた段階で、CSIRTが状況を整理し経営層への報告をまとめて行うように検討する。',
     reason: '誤り：重要情報の共有が遅れ、意思決定や外部対応が後手に回る可能性がある。',
-    priorityCategory: '落とし穴（事後まとめ報告）'
+    priorityCategory: '支援、教訓化'
   },
 
   // ==========================================
@@ -839,7 +839,7 @@ export const managementCards: ActionCard[] = [
     title: '優先業務の部分的な稼働',
     description: '影響が少ない業務は継続できる範囲で続ける方向を検討する。',
     reason: '誤り：業務継続を図りつつも、調査が終わるまで影響範囲が不明でリスクが残るため。',
-    priorityCategory: '落とし穴（リスク残存稼働）'
+    priorityCategory: '被害の最小化'
   },
   {
     id: 'mgt_ev3B_b2',
@@ -850,7 +850,7 @@ export const managementCards: ActionCard[] = [
     title: '状況分析の再実行を指示',
     description: '被害範囲をさらに正確に把握するため、現場への追加確認を指示する。',
     reason: '誤り：状況分析は終わっており、ここで再度対応すると反応が遅れてしまうため。',
-    priorityCategory: '落とし穴（初動対応の後退）'
+    priorityCategory: '被害の最小化'
   },
   {
     id: 'mgt_ev3B_b3',
@@ -861,7 +861,7 @@ export const managementCards: ActionCard[] = [
     title: '影響部門への優先的な確認',
     description: '被害の可能性が高い部門に対して、現状把握のヒアリングを行う。',
     reason: '誤り：このタイミングでは状況変化が激しく、部門情報では全体判断を誤らせる可能性があるため。',
-    priorityCategory: '落とし穴（局所判断の誤り）'
+    priorityCategory: '被害の最小化'
   },
   {
     id: 'mgt_ev3B_b4',
@@ -872,7 +872,7 @@ export const managementCards: ActionCard[] = [
     title: '情報管理の最適化',
     description: '社内の混乱を防ぐため、情報共有の範囲とルールを統一する。',
     reason: '誤り：統制は取れるが、一刻を争う状況では現場の即時判断が必要であり、判断待ちが対応の遅延につながるため。',
-    priorityCategory: '落とし穴（即時対応の停止）'
+    priorityCategory: '支援'
   },
   {
     id: 'mgt_ev3B_b5',
@@ -883,7 +883,7 @@ export const managementCards: ActionCard[] = [
     title: '対外調整の検討',
     description: '社外への発信内容を整理し、最適なタイミングを検討する。',
     reason: '誤り：慎重な対応は必要だが、封じ込めが最優先で、意思決定の遅れがリスクとなりえるため。',
-    priorityCategory: '落とし穴（意思決定遅滞）'
+    priorityCategory: '支援'
   },
   {
     id: 'mgt_ev3B_b6',
@@ -894,7 +894,7 @@ export const managementCards: ActionCard[] = [
     title: '内部主導での対応',
     description: '社内リソースだけで対応できない場合、外部支援の利用を検討する。',
     reason: '誤り：この段階で社外調整を始めると後手となり、事前準備の不足が封じ込めを妨げるため。',
-    priorityCategory: '落とし穴（後手の外部要請）'
+    priorityCategory: '支援'
   },
   {
     id: 'mgt_ev3B_b7',
@@ -905,7 +905,7 @@ export const managementCards: ActionCard[] = [
     title: '顧客対応の検討',
     description: '顧客や取引先へどの情報を提供するか、共有方法を検討する。',
     reason: '誤り：封じ込めが最優先の段階で顧客対応の議論を始めると、判断と対応が遅れ、組織の集中が乱れるため。',
-    priorityCategory: '落とし穴（集中の分散）'
+    priorityCategory: '支援'
   },
   {
     id: 'mgt_ev3B_b8',
@@ -916,7 +916,7 @@ export const managementCards: ActionCard[] = [
     title: '関係機関連携の調整',
     description: '報告書の構成を考え、報告手順や窓口を整理する。',
     reason: '誤り：作業手順の整理は重要だが、現段階で判断が遅れ実行フェーズに進めなくなるため。',
-    priorityCategory: '落とし穴（手順整理の泥沼）'
+    priorityCategory: '支援'
   },
   {
     id: 'mgt_ev3B_b9',
@@ -927,7 +927,7 @@ export const managementCards: ActionCard[] = [
     title: '原因の整理',
     description: '原因と経緯を整理し、経営層向けの報告書を作成する。',
     reason: '誤り：分析は必要だが、優先度が下がると緊急対応の妨げになるため。',
-    priorityCategory: '落とし穴（緊急時の書類作成）'
+    priorityCategory: '被害の整理'
   },
   {
     id: 'mgt_ev3B_b10',
@@ -938,7 +938,7 @@ export const managementCards: ActionCard[] = [
     title: '教訓化の着手',
     description: '対応の流れを見直し、次回に活かすための改善点を検討する。',
     reason: '誤り：再整理は有効だが、今動いている対応を遅らせるリスクがあるため。',
-    priorityCategory: '落とし穴（危機対応の遅延）'
+    priorityCategory: '支援'
   },
 
   // ==========================================
@@ -1074,7 +1074,7 @@ export const managementCards: ActionCard[] = [
     title: '早期再稼働の要求',
     description: '復旧作業の進捗を踏まえ、安全確認前に業務再開のタイミングを検討する。',
     reason: '誤り：業務再開は早くなるが、安全との両立が難しいため。',
-    priorityCategory: '落とし穴（拙速な再開要求）'
+    priorityCategory: '復旧の対応'
   },
   {
     id: 'mgt_ev4_b2',
@@ -1085,7 +1085,7 @@ export const managementCards: ActionCard[] = [
     title: '一括復旧の検討',
     description: '影響がなかった領域も含め、一括で復旧する案をまとめて検討する。',
     reason: '誤り：効率は良いが、影響範囲を見誤るリスクがあるため。',
-    priorityCategory: '落とし穴（一括復旧リスク）'
+    priorityCategory: '復旧の対応'
   },
   {
     id: 'mgt_ev4_b3',
@@ -1096,7 +1096,7 @@ export const managementCards: ActionCard[] = [
     title: '旧構成の部分的な復旧',
     description: '既存設定を活かし、問題が少ない部分から先に再稼働させる。',
     reason: '誤り：コストは減るが、潜在リスクが残りやすいため。',
-    priorityCategory: '落とし穴（旧構成の潜在リスク）'
+    priorityCategory: '復旧の対応'
   },
   {
     id: 'mgt_ev4_b4',
@@ -1107,7 +1107,7 @@ export const managementCards: ActionCard[] = [
     title: '業務優先の判断',
     description: '業務を優先的に行えるよう、細かなセキュリティ対策は後で実施する方針を取る。',
     reason: '誤り：経営判断としては理解できるが、再発時の管理が難しくなるため。',
-    priorityCategory: '落とし穴（セキュリティ後回し）'
+    priorityCategory: '復旧の対応'
   },
   {
     id: 'mgt_ev4_b5',
@@ -1118,7 +1118,7 @@ export const managementCards: ActionCard[] = [
     title: '復旧報告の簡略化',
     description: '時間短縮のため、技術報告を必要最低限の形式でまとめる。',
     reason: '誤り：スピードは出るが、記録の精度が下がるおそれがあるため。',
-    priorityCategory: '落とし穴（記録の精度低下）'
+    priorityCategory: '情報の整理'
   },
   {
     id: 'mgt_ev4_b6',
@@ -1129,7 +1129,7 @@ export const managementCards: ActionCard[] = [
     title: '社内への情報共有を最小化',
     description: '社内のトラブル情報を社外へ漏らさないため、共有する情報量を絞り最小限にとどめる。',
     reason: '誤り：情報の統制はできるが、学びが組織に広がりにくくなるため。',
-    priorityCategory: '落とし穴（組織学習の阻害）'
+    priorityCategory: '教訓化'
   },
   {
     id: 'mgt_ev4_b7',
@@ -1140,7 +1140,7 @@ export const managementCards: ActionCard[] = [
     title: '対外説明の迅速化',
     description: '信頼回復のため、外部への報告を優先的に進める。',
     reason: '誤り：早期の外部報告は良いが、誤報のリスクがあるため。',
-    priorityCategory: '落とし穴（誤報・未確定公表）'
+    priorityCategory: '支援'
   },
   {
     id: 'mgt_ev4_b8',
@@ -1151,7 +1151,7 @@ export const managementCards: ActionCard[] = [
     title: 'メディア対応の強化',
     description: '企業としての姿勢を示すため、広報による積極的なメッセージ発信を行う。',
     reason: '誤り：広報効果はあるが、内容次第で誤解を招く可能性があるため。',
-    priorityCategory: '落とし穴（時期尚早なメディア発信）'
+    priorityCategory: '支援'
   },
   {
     id: 'mgt_ev4_b9',
@@ -1162,7 +1162,7 @@ export const managementCards: ActionCard[] = [
     title: '改善策の先行発表',
     description: '再発防止に取り組む姿勢を見せるため、改善案を先に公表する。',
     reason: '誤り：前向きな姿勢は示せるが、実行が伴わないと逆効果になるため。',
-    priorityCategory: '落とし穴（実行を伴わない発表）'
+    priorityCategory: '教訓化'
   },
   {
     id: 'mgt_ev4_b10',
@@ -1173,6 +1173,6 @@ export const managementCards: ActionCard[] = [
     title: '社内対応の集約',
     description: '対応内容をまとめて報告書に整理し、組織として通常業務へ移行する。',
     reason: '誤り：復旧作業中に通常業務のフェーズへ移行してしまうと、問題発生時に再発のリスクがあるため。',
-    priorityCategory: '落とし穴（拙速な通常復帰）'
+    priorityCategory: '教訓化'
   }
 ];

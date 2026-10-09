@@ -158,7 +158,7 @@ export const CardLibrary: React.FC<CardLibraryProps> = ({ onReturnToTitle }) => 
                   typeFilter === 'bad' ? 'bg-rose-500 text-white font-bold' : 'text-slate-400 hover:text-white'
                 }`}
               >
-                Bad (トラップ)
+                Bad (非推奨)
               </button>
             </div>
           </div>

@@ -69,7 +69,7 @@ export const EndingScreen: React.FC<EndingScreenProps> = ({
     if (score >= 360) return { rank: 'S', label: '最優秀レジリエンス組織', color: 'text-amber-400' };
     if (score >= 300) return { rank: 'A', label: '優秀なインシデント対応力', color: 'text-emerald-400' };
     if (score >= 240) return { rank: 'B', label: '標準的な初動対応水準', color: 'text-cyan-400' };
-    return { rank: 'C', label: '再訓練推奨 (落とし穴対策強化)', color: 'text-rose-400' };
+    return { rank: 'C', label: '再訓練推奨 (初動判断精度の向上)', color: 'text-rose-400' };
   };
 
   const handlePrint = () => {

@@ -94,7 +94,7 @@ export const CardItem: React.FC<CardItemProps> = ({
                 isGood ? 'text-emerald-400' : 'text-rose-400'
               }`}
             >
-              {isGood ? '推奨アクション (Good)' : '不適切・落とし穴 (Bad)'}
+              {isGood ? '推奨アクション (Good)' : '非推奨アクション (Bad)'}
             </span>
             {card.priorityRank && (
               <span className="text-amber-400 font-mono text-xs font-bold tracking-widest">

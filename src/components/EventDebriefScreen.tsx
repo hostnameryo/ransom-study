@@ -420,7 +420,7 @@ export const EventDebriefScreen: React.FC<EventDebriefScreenProps> = ({
               <div>
                 <h4 className="text-xs font-semibold text-rose-400 mb-3 flex items-center gap-1.5">
                   <AlertTriangle className="w-4 h-4" />
-                  <span>選択してしまった危険なトラップカード ({currentReviewEval.incorrectSelections.length}枚)</span>
+                  <span>選択してしまった非推奨・不適切アクション ({currentReviewEval.incorrectSelections.length}枚)</span>
                 </h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                   {currentReviewEval.incorrectSelections.map((card) => (
@@ -431,7 +431,7 @@ export const EventDebriefScreen: React.FC<EventDebriefScreenProps> = ({
                     >
                       <div className="flex items-center justify-between font-mono text-[11px] text-rose-400 mb-1">
                         <span>#{card.no.toString().padStart(2, '0')} · {card.priorityCategory}</span>
-                        <span className="font-bold text-rose-400">トラップ</span>
+                        <span className="font-bold text-rose-400">非推奨</span>
                       </div>
                       <div className="font-bold text-white text-sm mb-1">{card.title}</div>
                       <p className="text-slate-300 text-[11px] line-clamp-2 mb-2">{card.description}</p>
