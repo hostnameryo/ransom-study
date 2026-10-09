@@ -62,6 +62,8 @@ export const PlayScreen: React.FC<PlayScreenProps> = ({
     return getCardsByEventAndTeam(currentEvent.id, activeTeam);
   }, [currentEvent.id, activeTeam]);
 
+  const targetCount = showAllDeck ? 10 : 5;
+
   // Candidate cards pool with completely randomized order
   const candidateCards = React.useMemo(() => {
     if (showAllDeck) {
@@ -87,13 +89,22 @@ export const PlayScreen: React.FC<PlayScreenProps> = ({
     playSound('select');
   };
 
+  const handleToggleShowAllDeck = () => {
+    setShowAllDeck((prev) => {
+      const next = !prev;
+      setSelectedCardIds([]);
+      playSound('select');
+      return next;
+    });
+  };
+
   const handleToggleCard = (cardId: string) => {
     playSound('select');
     setSelectedCardIds((prev) => {
       if (prev.includes(cardId)) {
         return prev.filter((id) => id !== cardId);
       }
-      if (prev.length >= 5) {
+      if (prev.length >= targetCount) {
         return [...prev.slice(1), cardId];
       }
       return [...prev, cardId];
@@ -112,11 +123,14 @@ export const PlayScreen: React.FC<PlayScreenProps> = ({
     const incorrectSelections = selectedCards.filter((c) => c.type === 'bad');
     const missedGoodCards = allGoodInEvent.filter((c) => !selectedCardIds.includes(c.id));
 
-    let rawScore = correctSelections.length * 20 - incorrectSelections.length * 5;
+    // Scoring: 20-card mode has 10 good cards (+10 pts each = 100), standard mode has 5 (+20 pts each = 100)
+    const pointsPerGood = showAllDeck ? 10 : 20;
+    const penaltyPerBad = 5;
+    let rawScore = correctSelections.length * pointsPerGood - incorrectSelections.length * penaltyPerBad;
     if (rawScore < 0) rawScore = 0;
     if (rawScore > 100) rawScore = 100;
 
-    if (incorrectSelections.length === 0 && correctSelections.length >= 5) {
+    if (incorrectSelections.length === 0 && correctSelections.length >= targetCount) {
       playSound('good');
     } else if (incorrectSelections.length > 0) {
       playSound('bad');
@@ -246,9 +260,14 @@ export const PlayScreen: React.FC<PlayScreenProps> = ({
           <h2 className="text-base font-bold text-white flex items-center gap-2">
             <Shield className="w-4 h-4 text-amber-400" />
             <span>対応アクションカードの選定</span>
+            {showAllDeck && (
+              <span className="text-[11px] font-mono font-semibold px-2 py-0.5 rounded bg-cyan-950/80 text-cyan-300 border border-cyan-500/40">
+                上級者モード: 推奨10枚
+              </span>
+            )}
           </h2>
           <p className="text-xs text-slate-400">
-            ランダム順で提示された候補カードの中から、このフェーズで採用すべき<strong className="text-amber-400">推奨アクション（5枚）</strong>を選択してください。
+            提示された候補カードの中から、このフェーズで採用すべき<strong className="text-amber-400">推奨アクション（{targetCount}枚）</strong>を選択してください。
           </p>
         </div>
 
@@ -263,15 +282,19 @@ export const PlayScreen: React.FC<PlayScreenProps> = ({
           </button>
 
           <button
-            onClick={() => setShowAllDeck(!showAllDeck)}
-            className="text-xs text-slate-400 hover:text-slate-200 bg-slate-900 hover:bg-slate-800 px-3 py-1.5 rounded-lg border border-slate-800 flex items-center gap-1.5 transition-colors"
+            onClick={handleToggleShowAllDeck}
+            className={`text-xs px-3 py-1.5 rounded-lg border flex items-center gap-1.5 transition-colors ${
+              showAllDeck
+                ? 'bg-amber-950/40 border-amber-500/50 text-amber-300 font-semibold'
+                : 'bg-slate-900 hover:bg-slate-800 text-slate-400 hover:text-slate-200 border-slate-800'
+            }`}
           >
             <Layers className="w-3.5 h-3.5" />
-            <span>{showAllDeck ? '10枚表示' : '全20枚表示'}</span>
+            <span>{showAllDeck ? '標準10枚表示 (推奨5枚)' : '全20枚表示 (上級者・推奨10枚)'}</span>
           </button>
 
           <div className="text-xs font-mono px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-300">
-            選択中: <strong className="text-amber-400">{selectedCardIds.length}</strong> / 5枚
+            選択中: <strong className="text-amber-400">{selectedCardIds.length}</strong> / {targetCount}枚
           </div>
         </div>
       </div>
@@ -294,16 +317,16 @@ export const PlayScreen: React.FC<PlayScreenProps> = ({
         <div className="flex items-center gap-3 text-xs text-slate-300">
           <div className="w-2.5 h-2.5 rounded-full bg-amber-400 animate-pulse" />
           <span>
-            {selectedCardIds.length === 5 ? (
+            {selectedCardIds.length === targetCount ? (
               <span className="text-emerald-400 font-medium">
-                推奨カード5枚が選択されました。方針を確定して判定へ進んでください。
+                推奨カード{targetCount}枚が選択されました。方針を確定して判定へ進んでください。
               </span>
             ) : selectedCardIds.length > 0 ? (
               <span>
-                あと <strong className="text-amber-400">{5 - selectedCardIds.length}</strong> 枚選択できます（5枚推奨）
+                あと <strong className="text-amber-400">{targetCount - selectedCardIds.length}</strong> 枚選択できます（{targetCount}枚推奨）
               </span>
             ) : (
-              <span>カードをクリックして採用するアクションを選んでください</span>
+              <span>カードをクリックして採用するアクションを選んでください（推奨: {targetCount}枚）</span>
             )}
           </span>
         </div>
