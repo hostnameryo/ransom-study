@@ -111,47 +111,35 @@ export default function App() {
 
   // Transition from Debrief to Next Event or Ending
   const handleProceedToNextEvent = (nextDestination: EventId | EndingId) => {
-    // Direct ending navigation
+    // Direct ending navigation (e.g. from 3B clicking 'ending3')
     if (nextDestination === 'ending1' || nextDestination === 'ending2' || nextDestination === 'ending3') {
       setEndingId(nextDestination);
       setViewState('ENDING');
       return;
     }
 
-    // Rule: If 3B was ever stepped on, ending is Ending 3
-    if (visitedEvents.includes('event3B') || currentEventId === 'event3B' || nextDestination === 'event3B') {
-      // If advancing from event3B to ending or completed
-      if (currentEventId === 'event3B') {
-        setEndingId('ending3');
-        setViewState('ENDING');
-        return;
-      }
-    }
-
     if (currentEventId === 'event4') {
       // Reached final ending from event4!
       // ルール:
-      // 1. 3Bをふんだら、エンディング3
-      // 2. イベント1、イベント3A、イベント4に進んだ場合は、エンディング1
-      // 3. それ以外の経路はエンディング2
+      // 1. イベント1 -> イベント3A -> イベント4 のみ: エンディング1
+      // 2. 3Bから3Aへ移動してイベント4へ来た場合: エンディング2
+      // 3. それ以外の経路 (例: イベント1 -> イベント2 -> イベント3A -> イベント4): エンディング2
       const hasVisited3B = visitedEvents.includes('event3B');
       const hasVisitedEvent2 = visitedEvents.includes('event2');
       const hasVisited3A = visitedEvents.includes('event3A');
 
-      if (hasVisited3B) {
-        setEndingId('ending3');
-      } else if (!hasVisitedEvent2 && hasVisited3A) {
+      if (!hasVisitedEvent2 && !hasVisited3B && hasVisited3A) {
         // イベント1 -> イベント3A -> イベント4
         setEndingId('ending1');
       } else {
-        // それ以外の経路（例: イベント1 -> イベント2 -> イベント3A -> イベント4、など）
+        // 3Bから3Aへ移動してイベント4へ来た場合、またはイベント2経由など、それ以外の経路はすべてエンディング2
         setEndingId('ending2');
       }
       setViewState('ENDING');
       return;
     }
 
-    // If destination is event3B, note that
+    // Normal navigation to next event (e.g., from 3B to 3A, or from 1 to 2/3A, etc.)
     setVisitedEvents((prev) => (prev.includes(nextDestination as EventId) ? prev : [...prev, nextDestination as EventId]));
     setCurrentEventId(nextDestination as EventId);
     setActiveTeam(drillMode === 'management' ? 'management' : 'engineer');

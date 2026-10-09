@@ -167,10 +167,10 @@ export const GuideScreen: React.FC<GuideScreenProps> = ({ onReturnToTitle }) => 
                 <span>エンディング2: フォレンジック対応</span>
               </div>
               <div className="text-[11px] font-mono text-indigo-300/80 mb-2 font-semibold">
-                到達条件: イベント2経由などの慎重封じ込め経路
+                到達条件: イベント2経由、またはイベント3B→3A→4の経路
               </div>
               <p className="text-slate-300 leading-relaxed">
-                イベント2（封じ込め継続）を経由して慎重な隔離と証跡保全を徹底し、外部フォレンジック専門機関および公的機関との連携により事態を収束させたシナリオです。
+                イベント2（封じ込め継続）を経由した経路や、イベント3Bからイベント3Aへ移動してイベント4を完了した経路など、徹底した証跡保全と専門機関連携によって事態を収束させたシナリオです。
               </p>
             </div>
             <div className="mt-3 pt-2 border-t border-slate-850 text-[11px] text-indigo-400 font-mono">
@@ -185,10 +185,10 @@ export const GuideScreen: React.FC<GuideScreenProps> = ({ onReturnToTitle }) => 
                 <span>エンディング3: 危機的状況の継続</span>
               </div>
               <div className="text-[11px] font-mono text-rose-300/90 mb-2 font-semibold">
-                到達条件: イベント3B（危機的な状況）を経由
+                到達条件: イベント3B（危機的な状況）で終了
               </div>
               <p className="text-slate-300 leading-relaxed">
-                イベント3Bに突入したことで基幹網への被害波及を許し、フォレンジック対応の継続中で会社の存亡に関わる重大な危機的状態が続いているシナリオです。
+                イベント3Bに突入し、基幹網への深刻な被害波及を許した重大事態。フォレンジック対応の継続中で会社の存亡に関わる危機的な状態が続いているシナリオです。
               </p>
             </div>
             <div className="mt-3 pt-2 border-t border-rose-900/40 text-[11px] text-rose-400 font-mono font-bold">

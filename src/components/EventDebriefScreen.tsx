@@ -390,19 +390,19 @@ export const EventDebriefScreen: React.FC<EventDebriefScreenProps> = ({
               <div>
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-xs font-mono font-bold text-amber-400 px-2 py-0.5 rounded bg-amber-400/10 border border-amber-400/20">
-                    リカバリ検証用
+                    分岐ルート
                   </span>
                   <ArrowRight className="w-4 h-4 text-slate-500 group-hover:text-amber-400 transition-colors" />
                 </div>
                 <div className="text-base font-bold text-white group-hover:text-amber-400 mb-1">
-                  イベント3A: 調査・復旧計画 をやり直す
+                  イベント3A: 調査・復旧計画 へ進む
                 </div>
                 <p className="text-xs text-slate-400 leading-relaxed">
-                  早期封じ込めに成功していた場合の「イベント3A: 調査・復旧計画」の出題に切り替えて検証演習を行います。
+                  イベント3Aへ移動して調査・復旧計画を実施します。その後イベント4を経て<strong>【エンディング2: フォレンジック対応】</strong>に到達します。
                 </p>
               </div>
               <div className="mt-3 pt-3 border-t border-slate-850 text-xs text-amber-400 font-semibold flex items-center gap-1">
-                <span>イベント3Aを体験する</span>
+                <span>イベント3Aへ移動 (→ イベント4 → エンディング2)</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </div>
             </button>
@@ -659,10 +659,10 @@ export const EventDebriefScreen: React.FC<EventDebriefScreenProps> = ({
               </button>
               <button
                 onClick={() => onProceedToNextEvent('event3A')}
-                className="flex-1 sm:flex-none px-5 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white font-bold text-xs sm:text-sm border border-slate-700 flex items-center justify-center gap-1.5 transition-all active:scale-[0.99]"
+                className="flex-1 sm:flex-none px-5 py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs sm:text-sm flex items-center justify-center gap-1.5 transition-all active:scale-[0.99] shadow-md shadow-amber-500/20"
               >
-                <span>イベント3A (調査・復旧計画) に戻る</span>
-                <ArrowRight className="w-4 h-4 text-amber-400" />
+                <span>イベント3Aへ移動 (→ イベント4へ)</span>
+                <ArrowRight className="w-4 h-4" />
               </button>
             </>
           ) : currentEvent.id === 'event2' ? (
