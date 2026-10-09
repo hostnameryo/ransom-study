@@ -1,0 +1,6 @@
+{
+  "name": "ランサムウェア対応訓練シミュレーター",
+  "description": "エンジニアチームとマネジメントチームで分かれて挑む、ランサムウェアインシデント初動対応・封じ込め・復旧のカード式実践訓練ゲーム",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

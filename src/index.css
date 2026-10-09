@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    background-color: #030712;
+    color: #f3f4f6;
+    font-family: 'Noto Sans JP', 'Plus Jakarta Sans', system-ui, sans-serif;
+  }
+}
+
+@media print {
+  body {
+    background-color: #ffffff !important;
+    color: #111827 !important;
+  }
+  header, nav, button {
+    display: none !important;
+  }
+  .print-area {
+    display: block !important;
+    color: #111827 !important;
+  }
+}
