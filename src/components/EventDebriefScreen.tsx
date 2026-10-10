@@ -487,7 +487,7 @@ export const EventDebriefScreen: React.FC<EventDebriefScreenProps> = ({
               選択アクションの成否と解説
             </h3>
             <p className="text-xs text-slate-400">
-              各チームが採用したアクションの正誤根拠と、見落とした推奨策を確認します。
+              各チームが採用したアクションの正誤根拠と、その他の推奨アクションを確認します。
             </p>
           </div>
 
@@ -586,7 +586,7 @@ export const EventDebriefScreen: React.FC<EventDebriefScreenProps> = ({
             <div>
               <h4 className="text-xs font-semibold text-slate-400 mb-3 flex items-center gap-1.5">
                 <Award className="w-4 h-4 text-amber-400" />
-                <span>見落とした推奨アクションの例</span>
+                <span>その他の推奨アクションの例</span>
               </h4>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                 {currentReviewEval.missedGoodCards.slice(0, 4).map((card) => (
